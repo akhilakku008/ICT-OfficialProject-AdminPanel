@@ -1,0 +1,84 @@
+.container{
+    width: 100%;
+    // min-height:100%;
+    margin-top: -50px;
+
+    
+}
+form{
+	max-width: 50em;
+    width: 25rem;
+  // height: 370px;
+  max-height:400px;
+	margin: 4em auto;
+	position: relative;
+    background: #000000;
+    padding: 2em 3em;
+    border-radius: 20px;
+    // overflow-y:scroll;
+    overflow:scroll;
+
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
+form h1{
+    font-family: "Raleway";
+    font-weight: 600;
+    color:#ffffff; 
+    
+}
+form input[type=text]::placeholder{
+   font-family: "Raleway";
+   color:rgb(122, 120, 120); 
+   font-weight: 600;
+}
+form .data{
+    margin-top: 1em;
+    
+}
+form .data li{
+ background: #fff;
+ border-left: 5px solid #F97300;
+ border-radius: 10px;
+ padding: 0.8em;
+ margin: 0.8em auto;
+ color: rgb(0, 0, 0);
+ font-family:monospace;
+}
+form .data li i{
+    float: right;
+    color: #888;
+    cursor: pointer;
+}
+form .input-group-text{
+    background: #F97300;
+    border-radius: 50%;
+    width: 5em;
+    height: 5em;
+    padding: 1em 23px;
+    color: rgb(255, 255, 255);
+    position: absolute;
+    right: 13px;
+    top: 90px;
+    cursor: pointer;
+}
+form .input-group-text i{
+    font-size: 2em;
+    margin-left: -1px;
+
+}
+form .form-control{
+	height: 3em;
+    font-family: "Raleway";
+    background-color: #2e2e2e;
+    text-indent: 10px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    
+}
+form .form-control:focus{
+	box-shadow: 0;
+}

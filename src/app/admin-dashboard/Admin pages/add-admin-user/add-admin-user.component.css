@@ -1,0 +1,23 @@
+.navbar-main{
+    background-color: #f8f9fa;
+}
+
+textarea ::placeholder{
+    color:#344767;
+}
+.ct_align{
+    margin-left: 20rem;
+}
+.text-large{
+    font-size: 25px;
+}
+.multisteps-form__content{
+    margin-left: -200px;
+    
+}
+.multisteps-form__content label{
+    margin-top: 10px;
+}
+.multisteps-form__content input{
+    text-indent: 1.2rem;
+}
