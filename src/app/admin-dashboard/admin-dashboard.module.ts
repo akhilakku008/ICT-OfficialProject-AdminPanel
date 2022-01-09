@@ -41,7 +41,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { TodosComponent } from './Admin pages/todos/todos.component';
 import { HttpClientModule } from '@angular/common/http'
-import { AdminServiceService } from './Admin pages/admin-service.service'
+import { AdminServiceService } from './Admin pages/admin-service.service';
+import { IndustrialComponent } from './Admin pages/industrial/industrial.component';
+import { KnowledgepartnerComponent } from './Admin pages/knowledgepartner/knowledgepartner.component';
+import { PatronComponent } from './Admin pages/patron/patron.component';
+import { AddIndustryComponent } from './Admin pages/add-industry/add-industry.component';
+import { AddPatronComponent } from './Admin pages/add-patron/add-patron.component';
+import { AddknowledgeComponent } from './Admin pages/addknowledge/addknowledge.component';
+
+
 
 
 
@@ -80,7 +88,14 @@ import { AdminServiceService } from './Admin pages/admin-service.service'
     PartnershipComponent,
     CorporateComponent,
     SearchCourseTitlePipe,
-    TodosComponent, 
+    TodosComponent,
+    IndustrialComponent,
+    KnowledgepartnerComponent,
+    PatronComponent,
+    AddIndustryComponent,
+    AddPatronComponent,
+    AddknowledgeComponent,
+
   ],
   imports: [
     CommonModule,

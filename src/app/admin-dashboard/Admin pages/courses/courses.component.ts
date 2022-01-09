@@ -18,7 +18,7 @@ export class CoursesComponent implements OnInit {
   query: any;
 
   courses: any;
-  status :any
+  status:String = "" 
 
   // index:any
 
@@ -34,25 +34,27 @@ export class CoursesComponent implements OnInit {
   
 
   ngOnInit(): void {
+
+
+
+
     this.adminServ.getCourses().subscribe((data) => {
          this.courses = data
+         console.log("result..",data.Reg_Status)   
        console.log(data)
       this.router.navigate(["courses"])
 
-      let myContainer = <HTMLElement>document.getElementById('reg');
 
-       if (data.Reg_Status == 0) {
-        myContainer.innerHTML = "closed"
-      } else if (data.Reg_Status == 1) {
-        myContainer.innerHTML = "open"    
-      }
-      else if (data.reg_Status == 2) {
-        myContainer.innerHTML = "comming soon"
-      }
+      console.log("reg",data.Reg_Status)
+      // let myContainer = <HTMLElement>document.getElementById('reg');
+
+      
     })
+
 
   }
 
+ 
   //?delete dialogue box
   // DeleteCourse() {
   //   Swal.fire({

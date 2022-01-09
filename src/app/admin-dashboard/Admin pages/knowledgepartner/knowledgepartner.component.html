@@ -142,7 +142,7 @@
 
                                 <div class="ms-auto my-auto mt-lg-0 mt-4">
                                     <div class="ms-auto my-auto">
-                                        <a routerLink="/adminpage/addcourses" class="btn bg-gradient-primary btn-sm mb-0" *ngIf="auth.loggedIn() && auth.add ==='true'||auth.loggedIn() && auth.superadmin === 'true'"  >&nbsp; New Course</a>
+                                        <a routerLink="/adminpage/addknowledge" class="btn bg-gradient-primary btn-sm mb-0" *ngIf="auth.loggedIn() && auth.add ==='true'||auth.loggedIn() && auth.superadmin === 'true'"  >&nbsp; Add knowledge</a>
                                         
                                         
                                     </div>
@@ -157,49 +157,50 @@
                     <thead>
                     <tr class="text-center">
                         <th class="text-center text-uppercase text-dark text-sm font-weight-bolder ">Index no</th>
-                        <th class="text-uppercase text-dark text-sm font-weight-bolder ">Course</th>
+                        <!-- <th class="text-uppercase text-dark text-sm font-weight-bolder ">Course</th> -->
                         <th class="text-uppercase text-dark text-sm font-weight-bolder ">Course Image</th>
-                        <th class="text-uppercase text-dark text-sm font-weight-bolder ps-2">Category</th>
+                        <!-- <th class="text-uppercase text-dark text-sm font-weight-bolder ps-2">Category</th>
                         <th class="text-center text-uppercase text-dark text-sm font-weight-bolder ">Course fee</th>
-                        <th class="text-center text-uppercase text-dark text-sm font-weight-bolder ">Status</th>
+                        <th class="text-center text-uppercase text-dark text-sm font-weight-bolder ">Status</th> -->
                         <th class="text-center text-uppercase text-dark text-sm font-weight-bolder ">Action</th>
                         <th class="text-secondary opacity-7"></th>
                     
                     </tr>
                     </thead>
-                    <tbody *ngFor="let course of courses | searchCourseTitle: query ; let i=index;" >
+                    <tbody *ngFor="let know of knowledge | searchCourseTitle: query ; let i=index;" >
                     <tr>
                         <td class="align-center text-center text-sm p-1">
                             <p class="text-md font-weight-bold mb-0">{{i+1}}</p>
                         </td>
+                        <!-- <td class="align-center text-center text-sm">
+                            <p class="text-md font-weight-bold mb-0 p-1">{{indus.image}}</p>
+                        </td> -->
                         <td class="align-center text-center text-sm">
-                            <p class="text-md font-weight-bold mb-0 p-1">{{course.courseTitle}}</p>
+                        <img src="http://localhost:3000/{{know.image}}" width="100px" alt="">
                         </td>
-                        <td class="align-center text-center text-sm">
-                        <img src="http://localhost:3000/{{course.courseImage}}" width="60px" alt="">
+                        <!-- <h1>{{indus.image}}</h1> -->
+
+                        <!-- <td class="align-center text-center text-sm p-1">
+                            <p class="text-md font-weight-bold mb-0">{{indus.category}}</p>
                         </td>
 
                         <td class="align-center text-center text-sm p-1">
-                            <p class="text-md font-weight-bold mb-0">{{course.category}}</p>
+                            <p class="text-md font-weight-bold mb-0">{{indus.courseFee}}</p>
                         </td>
-
-                        <td class="align-center text-center text-sm p-1">
-                            <p class="text-md font-weight-bold mb-0">{{course.courseFee}}</p>
-                        </td>
-                        
-                        <td class="align-center text-center text-sm p-1">
-                            <p  class="badge badge-sm badge-danger text-xs font-weight-bold mb-0 " *ngIf="course.Reg_Status==0" id="reg">Closed</p>
-                            <p  class="badge badge-sm badge-success text-xs font-weight-bold mb-0" *ngIf="course.Reg_Status==1" id="reg">open</p>
-                            <p  class="badge badge-sm badge-warning text-xs font-weight-bold mb-0" *ngIf="course.Reg_Status==2" id="reg">comming </p>
-                        </td>
+                         -->
+                        <!-- <td class="align-center text-center text-sm p-1">
+                            <p  class="badge badge-sm badge-danger text-xs font-weight-bold mb-0 " *ngIf="indus.Reg_Status==0" id="reg">Closed</p>
+                            <p  class="badge badge-sm badge-success text-xs font-weight-bold mb-0" *ngIf="indus.Reg_Status==1" id="reg">open</p>
+                            <p  class="badge badge-sm badge-warning text-xs font-weight-bold mb-0" *ngIf="indus.Reg_Status==2" id="reg">comming </p>
+                        </td> -->
 
                         <!-- <td class="align-center text-center text-sm">
                             <p class="text-md font-weight-bold mb-0">View</p>
                         </td> -->
                         <td class="align-center text-center act-align">
-                            <i class="fas fa-eye text-info" data-bs-toggle="tooltip" data-bs-placement="left" title="View the Course" (click)="ViewCourse(course)"></i>
-                            <i class="fas fa-edit ms-3 text-warning" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit the Course" *ngIf="auth.loggedIn() && auth.edit ==='true'||auth.loggedIn() && auth.superadmin === 'true'" (click)="editCourse(course)"></i>
-                            <i class="fas fa-trash ms-3 text-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete the Course" *ngIf="auth.loggedIn() && auth.delete ==='true'||auth.loggedIn() && auth.superadmin === 'true'"  (click)="DeleteCourse(course)"></i>
+
+                    
+                            <i class="fas fa-trash ms-3 text-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete the Course" *ngIf="auth.loggedIn() && auth.delete ==='true'||auth.loggedIn() && auth.superadmin === 'true'"  (click)="Deleteknow(know)"></i>
 
                         </td>
                     </tr>
@@ -314,4 +315,5 @@
             </div>
         </div>
     </div>
-    
+  
+

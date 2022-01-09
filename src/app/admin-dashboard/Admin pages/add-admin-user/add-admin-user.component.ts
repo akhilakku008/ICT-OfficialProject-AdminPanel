@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -10,6 +10,9 @@ import {AdminServiceService} from '../admin-service.service'
   styleUrls: ['./add-admin-user.component.css']
 })
 export class AddAdminUserComponent implements OnInit {
+
+  @Output() changed = new EventEmitter<boolean>();
+  checked: boolean=false;
   
   isAlert=false;
   alertMsg="User updated Successfully";
@@ -20,16 +23,16 @@ export class AddAdminUserComponent implements OnInit {
   submitted = false
   add:any
    
-  adminUser = {
+ adminUser = {
     username       : '',
     password       : '',
     firstname      : '',
     lastname       : '',
     email          : '',
     superadmin     : false ,
-    add            : true,
-    edit           : true,
-    delete         : true,
+    add            : false,
+    edit           :false, 
+    delete         : false,
   }
 
   selectedFile:any=null;
@@ -136,6 +139,39 @@ get usrname()
 
         }
       })
-  } 
+  }
+
+ //change role
+
+ changeRole() {
+
+  let element = <HTMLInputElement>document.getElementById('superAdmin');
+  let isChecked = element.checked;
+   console.log("checked", isChecked)
+   this.adminUser.superadmin = isChecked
+
+  };
+
+  addRole() {
+    let element = <HTMLInputElement>document.getElementById('addAccess');
+  let isChecked = element.checked;
+   console.log("checked", isChecked)
+   this.adminUser.add = isChecked
+  }
+
+  editRole() {
+    let element = <HTMLInputElement>document.getElementById('editAccess');
+  let isChecked = element.checked;
+   console.log("checked", isChecked)
+   this.adminUser.edit = isChecked
+  }
+  
+  deleteRole() {
+    let element = <HTMLInputElement>document.getElementById('deleteAccess');
+  let isChecked = element.checked;
+   console.log("checked", isChecked)
+   this.adminUser.delete = isChecked
+  }
+  
 
 }

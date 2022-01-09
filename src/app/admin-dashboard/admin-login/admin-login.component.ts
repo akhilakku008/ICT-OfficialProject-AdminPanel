@@ -78,7 +78,7 @@ export class AdminLoginComponent implements OnInit {
           console.log("SuperAdmin logged", response.token)
           console.log("admin logged",response.role)
           this._router.navigate(['/adminpage']);
-        } else  {
+        } else {
           Swal.fire(
             'Warning!!',
             'admin not found!',

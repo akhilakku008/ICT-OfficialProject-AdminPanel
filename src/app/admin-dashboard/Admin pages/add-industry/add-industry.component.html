@@ -12,10 +12,6 @@
 
 
 <body class="g-sidenav-show  bg-gray-200">
-
-    
-
-
     <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
         <app-sidenavbar></app-sidenavbar>
     </aside>
@@ -43,9 +39,9 @@
             </a>
                       </li>
                       <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" routerLink="/adminpage/dashboard">Admin Dashboard</a></li>
-                      <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Add Admin-user</li>
+                      <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Add Industrial partners</li>
                   </ol>
-                  <h4 class="font-weight-bolder mb-0">Add Admin-user</h4>
+                  <h4 class="font-weight-bolder mb-0">Industrial partners</h4>
               </nav>
               <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">
                   <a href="javascript:;" class="nav-link text-body p-0">
@@ -141,21 +137,13 @@
           </div>
       </nav>
     <!-- End Navbar -->
-
-    <div *ngIf="isAlert" class="alert alert-success" role="alert">
-        {{alertMsg}}
-    </div>
-    
-    <div *ngIf="isAlert2" class="alert alert-danger" role="alert">
-        {{alertMsg1}}
-    </div>
     
 
 
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12 text-center">
-                <!-- <h5 class="font-weight-normal opacity-6">This information will let us know more about you.</h5> -->
+                
                 <div class="multisteps-form mb-5">
                     <!--progress bar-->
                     <div class="row">
@@ -163,129 +151,32 @@
                             <div class="card">
                                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                                        <h2 style="color:aliceblue">New Admin User</h2>
+                                        <h2 style="color:aliceblue">New industrial</h2>
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form class="multisteps-form__form" [formGroup]="AdduserForm" (ngSubmit)="addUser()" >
+                                    <form class="multisteps-form__form "  [formGroup]="AddcourseForm" (ngSubmit)="addindustry()">
                                         <!--single form panel-->
                                         <div class="multisteps-form__panel js-active" data-animation="FadeIn">
                                             
                                             <div class="multisteps-form__content">
                                                 <div class="row mt-3">
-                                                    <div class="col-12 col-sm-4 mt-4">
-                                                        <div class="avatar avatar-xxl position-relative">
-                                                            <img [src]="imgURL" height="150" width="150" *ngIf="imgURL">
-                                                            
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12 col-sm-8 mt-4 mt-sm-0 text-start">
-                                                        <div class="input-group input-group-dynamic mb-4">
-                                                            <label class="form-label">User Name</label>
-                                                            <input required formControlName="usrname" name="usrname" type="text" [(ngModel)]="adminUser.username" class="form-control multisteps-form__input">
-                                                        </div>
-                                                        <span class="mb-2" *ngIf="usrname && usrname.invalid && usrname.touched" style="color:#D81B60; font-size: 12px;">Please enter username</span>
-                                                    
-                                                        <div class="input-group input-group-dynamic mb-4">
-                                                            <label class="form-label">First Name</label>
-                                                            <input required type="text" class="form-control multisteps-form__input" [(ngModel)]="adminUser.firstname" formControlName="Fname">
-                                                        </div>
-                                                        <span class="mb-2" *ngIf="Fname && Fname.invalid && Fname.touched" style="color:#D81B60; font-size: 12px;">Please enter Firstname</span>
-
-                                                        <div class="input-group input-group-dynamic mb-4">
-                                                            <label class="form-label">Last Name</label>
-                                                            <input required type="text" class="form-control multisteps-form__input" [(ngModel)]="adminUser.lastname" formControlName="Lname">
-                                                        </div>
-                                                        <span class="mb-2" *ngIf="Lname && Lname.invalid && Lname.touched" style="color:#D81B60; font-size: 12px;">Please enter Lastname</span>
-
-                                                        <div class="input-group input-group-dynamic">
-                                                            <label class="form-label">Email Address</label>
-                                                            <input required type="email" class="form-control multisteps-form__input" [(ngModel)]="adminUser.email" formControlName="email">
-                                                        </div>
-                                                        <span class="mb-2" *ngIf="email && email.invalid && email.touched" style="color:#D81B60; font-size: 12px;">Please enter Email</span>
-
-                                                        <!-- <div class="input-group input-group-dynamic mt-4">
-                                                            <label class="form-label">Designation</label>
-                                                            <input required type="text" class="form-control multisteps-form__input" [(ngModel)]="adminUser.designation" formControlName="designation">
-                                                        </div> -->
-                                                        <span class="mb-2" *ngIf="designation && designation.invalid && designation.touched" style="color:#D81B60; font-size: 12px;">Please enter Designation</span>
-
-                                                        <!-- <div class="input-group input-group-dynamic mt-4">
-                                                            =
-                                                            <textarea required placeholder="About User" class="form-control multisteps-form__input" [(ngModel)]="adminUser.about" formControlName="about"></textarea>
-                                                        </div> -->
-
-                                                        <span class="mb-2" *ngIf="about && about.invalid && about.touched" style="color:#D81B60; font-size: 12px;">About admin user is required</span>
-
-                                                        <div class="mt-4"><span>Image</span></div> 
-                                                        <!-- <div class="input-group input-group-dynamic">
-                                                            <input  #file type="file" (change)="createFormData($event)" (change)="preview(file.files)" accept='image/*' class="form-control multisteps-form__input" [(ngModel)]="adminUser.image" formControlName="about" >
-                                                        </div> -->
-                                                        <span class="mb-2" *ngIf="image && image.invalid && image.touched" style="color:#D81B60; font-size: 12px;">Please insert image</span>
-
-                                                        <div class="input-group input-group-dynamic mt-4">
-                                                            <label class="form-label">Password</label>
-                                                            <input required type="password" class="form-control multisteps-form__input" [(ngModel)]="adminUser.password" formControlName="pwd">
-                                                        </div>
-                                                        <span class="mb-2" *ngIf="pwd && pwd.invalid && pwd.touched" style="color:#D81B60; font-size: 12px;">Please enter Password</span>
+                                                    <div class="col-12 col-sm-4 mt-6 " id="imm">
                                                         
+                                                        <!-- <div class="mt-4"><span>Image</span></div>  -->
+                                                        <div class="input-group input-group-dynamic ms-5">
+                                                            <input type="file" formControlName="img" (change)="createFormData($event)"  name="dssd" class="form-control multisteps-form__input">
+                                                        </div>
+                                                        <span class="mb-2" *ngIf="img && img.invalid && img.touched" style="color:#D81B60; font-size: 12px;">Please insert image </span>
+                                                        <div class="button-row d-flex mt-4">
+                                                         
+                                                            <button  class="btn bg-gradient-dark ms-auto mb-0 bg-primary" type="submit" title="Next">Add partner</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 
                                             </div>
-                                        </div>
-                                        <!--single form panel-->
-                                        <div class="multisteps-form__panel" data-animation="FadeIn">
-                                            <div class="row text-center mt-4">
-                                                <div class="col-10 mx-auto">
-                                                    <!-- <h3 class="font-weight-normal">Privilage</h3> -->
-                                                    <!-- <p>Give us more details about you. What do you enjoy doing in your spare time?</p> -->
-                                                </div>
-                                            </div>
-
-                                                <div class="multisteps-form__panel" data-animation="FadeIn">
-                                                <div class="row text-center mt-4">
-                                                    <div class="col-10 mx-auto">
-                                                        <h3 class="fw-bolder text-large">Access Control</h3>
-                                                        <!-- <p>Give us more details about you. What do you enjoy doing in your spare time?</p> -->
-                                                    </div>
-                                                </div>
-                                                <div class="multisteps-form__content">
-                                                           
-                                                          <div class="ct_align ">
-                                                            <div class="form-check form-switch" style="margin-left: 30%;" >
-                                                                <input class="form-check-input" type="checkbox" role="switch"  id="superAdmin"  (click)="changeRole()" name="superadmin" [(ngModel)]="adminUser.superadmin">
-                                                                <label class="form-check-label text-black" for="flexSwitchCheckDefault" style="margin-right: 80%;position: relative;top: -6px; ">Full Access</label>
-                                                              </div>
-                                                           
-                                                        
-                                                        
-                                                            <div class="form-check form-switch" style="margin-left: 30%;">
-                                                                <input class="form-check-input" type="checkbox" role="switch" id="addAccess"  name="isCheckBox"   (click)="addRole()"  [(ngModel)]="adminUser.add">
-                                                                <label class="form-check-label text-black" for="flexSwitchCheckDefault"style="margin-right: 80%;position: relative;top: -6px; ">Add Access</label>
-                                                              </div>
-                                                            
-                                                        
-                                                            <div class="form-check form-switch" style="margin-left: 30%;">
-                                                                <input class="form-check-input" type="checkbox" role="switch" id="editAccess" name="edit"    (click)="editRole()" [(ngModel)]="adminUser.edit">
-                                                                <label class="form-check-label text-black" for="flexSwitchCheckDefault"style="margin-right: 80%;position: relative;top: -6px; ">Edit Access</label>
-                                                              </div>
-                                                            
-                                                        
-                                                            <div class="form-check form-switch" style="margin-left: 30%;">
-                                                                <input class="form-check-input" type="checkbox" role="switch" id="deleteAccess" name="superadmin"   (click)="deleteRole()" [(ngModel)]="adminUser.delete">
-                                                                <label class="form-check-label text-black" for="flexSwitchCheckDefault" style="margin-right: 80%;position: relative;top: -6px; ">DeleteAccess</label>
-                                                            </div>
-                                                            
-                                                        </div>
-                                                    
-                                                    <div class="button-row d-flex mt-4">
-                                                        <!-- <button class="btn btn-outline-dark mb-0 js-btn-prev" type="button" title="Prev">Prev</button> -->
-                                                        <button   class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="submit" title="Next" (mousedown)="submitted=true">ADD</button>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                        </div>
+                                        </div> 
                                     </form>
                                 </div>
                             </div>
@@ -435,3 +326,6 @@
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="/assets/admin/js/material-dashboard.min.js?v=3.0.2"></script>
 </body>
+
+
+

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './Admin pages/dashboard/dashboard.component';
 import {AdminLoginComponent} from './admin-login/admin-login.component';
@@ -30,6 +30,13 @@ import { ViewTestimonyComponent } from './Admin pages/view-testimony/view-testim
 import { RegisteredUsersComponent } from './Admin pages/registered-users/registered-users.component';
 import { PartnershipComponent } from './Admin pages/partnership/partnership.component';
 import { CorporateComponent } from './Admin pages/corporate/corporate.component';
+import { IndustrialComponent } from './Admin pages/industrial/industrial.component';
+import { KnowledgepartnerComponent } from './Admin pages/knowledgepartner/knowledgepartner.component';
+import { PatronComponent } from './Admin pages/patron/patron.component';
+import { AddIndustryComponent } from './Admin pages/add-industry/add-industry.component';
+import { AddPatronComponent } from './Admin pages/add-patron/add-patron.component';
+import { AddknowledgeComponent } from './Admin pages/addknowledge/addknowledge.component';
+
 
 const routes: Routes = [
 
@@ -48,7 +55,28 @@ const routes: Routes = [
          {
            path:'courses',
            component:CoursesComponent
-         },
+  },
+  {
+    path: 'industrial',
+    component:IndustrialComponent
+  },
+  {
+    path: 'industryAdd',
+    component:AddIndustryComponent
+  },
+
+  {
+    path: 'knowledge',
+    component:KnowledgepartnerComponent
+  },
+  {
+    path: 'addknowledge',
+  component:AddknowledgeComponent},
+  {
+    path: 'patrons',
+    component: PatronComponent
+  },
+ {path:"addpatron",component:AddPatronComponent},
          {
            path:'addcourses',
            component:AddcourseComponent

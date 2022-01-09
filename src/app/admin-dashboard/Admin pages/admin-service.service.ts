@@ -226,7 +226,60 @@ deleteuser(data:any){
     this.todoList.unshift(item);
   }
   
-  
+  //! industry
+
+  addIndustry(item: any) {
+    console.log("item",item)
+    return this.http.post<any>(`${this.server_address}/industrypartneradmin/add`,item);
+  }
+
+  ViewIndustry() { 
+
+    return this.http.get(`${this.server_address}/industry`);
+   
+  }
+
+  RemoveIndus(data: any) {
+  console.log("vannitundeee")
+  return this.http.post(`${this.server_address}/industrypartneradmin/remove/`,data);
+  }
+
+  //Knowledge
+  addKnowledge(item: any) {
+    console.log("item",item)
+    return this.http.post<any>(`${this.server_address}/knowledge/add`,item);
+  }
+
+  ViewKnowledge() { 
+
+    return this.http.get(`${this.server_address}/knowledge`);
+   
+  }
+
+  RemoveKnowledge(data: any) {
+  console.log("vannitundeee")
+  return this.http.post(`${this.server_address}/knowledge/remove/`,data);
+  }
+
+
+  //patrons
+  addpatrons(item: any) {
+    console.log("item",item)
+    return this.http.post<any>(`${this.server_address}/patronadmin/add`,item);
+  }
+
+  Viewpatron() { 
+
+    return this.http.get(`${this.server_address}/patrons`);
+   
+  }
+
+  Removepatron(data: any) {
+  console.log("vannitundeee")
+  return this.http.post(`${this.server_address}/patronadmin/remove/`,data);
+  }
+
+
 
 
     
