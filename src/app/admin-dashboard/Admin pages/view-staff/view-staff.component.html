@@ -41,9 +41,9 @@
               </a>
                         </li>
                         <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" routerLink="/adminpage/dashboard">Admin Dashboard</a></li>
-                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Testimony</li>
+                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">View staff</li>
                     </ol>
-                    <h6 class="font-weight-bolder mb-0">Testimony</h6>
+                    <h6 class="font-weight-bolder mb-0">Staff</h6>
                 </nav>
                 <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">
                     <a href="javascript:;" class="nav-link text-body p-0">
@@ -147,7 +147,7 @@
                          <h2 class="mb-4">Testimony</h2>
                          <div class="row">
                              <div class="col-xl-5 col-lg-6 text-center">
-                                 <img class="w-100 border-radius-lg shadow-lg mx-auto" src="{{staffItem.image}}" alt="chair">        
+                                 <img class="w-75 border-radius-lg shadow-lg mx-auto" src="{{staffItem.image}}" alt="chair">        
                                  <p>Staff image</p>
                                 </div>
                              <div class="col-lg-5 mx-auto">
@@ -156,7 +156,7 @@
                                  <h3 class=" text-black fw-bold">Designation</h3>
                                  <h1 class="mt-lg-0 mt-4 fw-bolder" >{{staffItem.designation}}</h1>
                                  <h3  class=" text-black fw-bold ">Role</h3>
-                                 <h1 class="mt-lg-0 mt-4 fw-bold badge badge-sm badge-dark">{{staffItem.role}}</h1>
+                                 <h1 class="mt-lg-0 mt-4 fw-bolder badge badge-sm badge-danger">{{staffItem.role}}</h1>
                                  
                                  <h3  class=" text-black fw-bold">About</h3>
                                  <!-- <h1 class="mt-lg-0 mt-4 fw-bolder" >{{testimonialItem.courseTitle}}</h1> -->

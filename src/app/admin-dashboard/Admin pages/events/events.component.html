@@ -146,7 +146,7 @@
 
                               <div class="ms-auto my-auto mt-lg-0 mt-4">
                                    <div class="ms-auto my-auto">
-                                    <a class="btn bg-gradient-primary btn-sm mb-0 text-white" routerLink="/adminpage/add-events" [hidden]="addAccess()" (click)="addEvents()" >+&nbsp; New Event</a>
+                                    <a class="btn bg-gradient-primary btn-sm mb-0 text-white" routerLink="/adminpage/add-events"  *ngIf="auth.loggedIn() && auth.add ==='true'||auth.loggedIn() && auth.superadmin === 'true'" (click)="addEvents()" >+&nbsp; New Event</a>
                                     
                                     
                                 </div>
@@ -161,12 +161,14 @@
                 <thead>
                   <tr class="text-center">
                     <th class="text-center text-uppercase text-dark text-sm font-weight-bolder ">Index no</th>
-                    
                     <th class="text-uppercase text-dark text-sm font-weight-bolder ">course name</th>
+                    <th class="text-uppercase text-dark text-sm font-weight-bolder ">Event name</th>
                     <th class="text-uppercase text-dark text-sm font-weight-bolder ">Event Image</th>
                     <th class="text-uppercase text-dark text-sm font-weight-bolder ps-2">Fees</th>
+                    <th class="text-center text-uppercase text-dark text-sm font-weight-bolder ">Last Date registration</th>
                     <th class="text-center text-uppercase text-dark text-sm font-weight-bolder ">startdate</th>
                     <th class="text-center text-uppercase text-dark text-sm font-weight-bolder ">enddate</th>
+                   
                     <th class="text-center text-uppercase text-dark text-sm font-weight-bolder ">creation_date</th>
                     <th class="text-center text-uppercase text-dark text-sm font-weight-bolder ">Action</th>
                     <th class="text-secondary opacity-7"></th>
@@ -178,15 +180,21 @@
                         <p class="text-md font-weight-bold mb-0">{{i+1}}</p>
                     </td>
                     <td class="align-center text-center text-sm p-1">
+                        <p class="text-md font-weight-bold mb-0">{{event.eventname}}</p>
+                    </td>
+                    <td class="align-center text-center text-sm p-1">
                         <p class="text-md font-weight-bold mb-0">{{event.coursename}}</p>
                     </td>
 
                     <td class="align-center text-center text-sm p-1">
-                        <img src="{{event.image}}" alt="" width="70px">
+                        <img src="http://localhost:3000/{{event.image}}" alt="" width="70px">
                     </td>
 
                     <td class="align-center text-center text-sm p-1">
-                        <p class="text-md font-weight-bold mb-0">{{event.fees}}</p>
+                        <p class="text-md font-weight-bold mb-0">{{event.eventfees}}</p>
+                    </td>
+                    <td class="align-center text-center text-sm p-1 ">
+                        <p class="text-md font-weight-bold mb-0 testi_align">{{event.lastDateReg}}</p>
                     </td>
 <!--                      
                     <td class="align-center text-center text-sm p-1">
@@ -207,8 +215,8 @@
                     </td> -->
                     <td class="align-center text-center act-align">
                         <i class="fas fa-eye text-info" data-bs-toggle="tooltip" data-bs-placement="left" title="View the Course" routerLink="/adminpage/view-testimony" (click)="Viewevent(event)"></i>
-                        <i class="fas fa-edit ms-3 text-warning" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit the Course" routerLink="/adminpage/edit-testimony" [hidden]="editAccess()" (click)="editevent(event)"></i>
-                        <i class="fas fa-trash ms-3 text-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete the Course" [hidden]="deleteAccess()" (click)="Deleteevent(event)"></i>
+                        <i class="fas fa-edit ms-3 text-warning" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit the Course" routerLink="/adminpage/edit-testimony"  *ngIf="auth.loggedIn() && auth.edit ==='true'||auth.loggedIn() && auth.superadmin === 'true'"  (click)="editevent(event)"></i>
+                        <i class="fas fa-trash ms-3 text-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete the Course"  *ngIf="auth.loggedIn() && auth.delete ==='true'||auth.loggedIn() && auth.superadmin === 'true'" (click)="Deleteevent(event)"></i>
 
                     </td>
                   </tr>

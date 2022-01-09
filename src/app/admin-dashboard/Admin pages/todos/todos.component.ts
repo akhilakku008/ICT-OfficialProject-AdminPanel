@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class TodosComponent implements OnInit {
 
   // todoArray=[];
-  todo:any;
+  todo = []
   todoForm: any
 
   todoArray = ["hello world","just a trial ","new course added","new course added","new course added","new course added"]

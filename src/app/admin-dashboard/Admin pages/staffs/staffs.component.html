@@ -28,7 +28,7 @@
             </a>
                       </li>
                       <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" routerLink="/adminpage/dashboard" >Staff Dashboard</a></li>
-                      <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Courses List</li>
+                      <li class="breadcrumb-item text-sm text-dark active" aria-current="page">staffs</li>
                   </ol>
                   <h4 class="font-weight-bolder mb-0">Staff List</h4>
               </nav>
@@ -142,7 +142,7 @@
 
                               <div class="ms-auto my-auto mt-lg-0 mt-4">
                                   <div class="ms-auto my-auto">
-                                      <a routerLink="/adminpage/add-staffs" class="btn bg-gradient-primary btn-sm mb-0" (click)="AddStaff()" >+&nbsp;Add Staff</a>
+                                      <a routerLink="/adminpage/add-staffs" class="btn bg-gradient-primary btn-sm mb-0"  *ngIf="auth.loggedIn() && auth.add ==='true'||auth.loggedIn() && auth.superadmin === 'true'" (click)="AddStaff()" >+&nbsp;Add Staff</a>
                                       
                                       
                                   </div>
@@ -210,8 +210,8 @@
                     </td> -->
                     <td class="align-center text-center act-align">
                         <i class="fas fa-eye text-info" data-bs-toggle="tooltip" data-bs-placement="left" title="View the Course"  (click)="ViewStaff(staff)"></i>
-                        <i class="fas fa-edit ms-3 text-warning" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit the Course"   (click)="editStaff(staff)"></i>
-                        <i class="fas fa-trash ms-3 text-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete the Course" (click)="DeleteStaff(staff)"></i>
+                        <i class="fas fa-edit ms-3 text-warning" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit the Course"  *ngIf="auth.loggedIn() && auth.edit ==='true'||auth.loggedIn() && auth.superadmin === 'true'"  (click)="editStaff(staff)"></i>
+                        <i class="fas fa-trash ms-3 text-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete the Course"  *ngIf="auth.loggedIn() && auth.delete ==='true'||auth.loggedIn() && auth.superadmin === 'true'" (click)="DeleteStaff(staff)"></i>
 
                     </td>
                   </tr>

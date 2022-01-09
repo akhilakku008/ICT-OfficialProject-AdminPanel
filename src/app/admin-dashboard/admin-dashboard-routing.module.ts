@@ -34,7 +34,7 @@ import { CorporateComponent } from './Admin pages/corporate/corporate.component'
 const routes: Routes = [
 
       {
-        path:'dashboard',
+        path:'',
        component:DashboardComponent
          },
          {

@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2';
 import {AdminServiceService} from '../admin-service.service';
 import { ActivatedRoute,Router } from '@angular/router';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-registered-users',
@@ -35,7 +36,7 @@ searchText:any;
   end: new FormControl()
 });
   
-  constructor(private adminServ:AdminServiceService,private router:Router, private route: ActivatedRoute) { }
+  constructor(private adminServ:AdminServiceService,private router:Router, private route: ActivatedRoute,public auth:AuthService) { }
 
   ngOnInit(): void {
       

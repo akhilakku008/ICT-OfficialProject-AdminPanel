@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminServiceService } from '../admin-service.service'
 import Swal from 'sweetalert2';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-events',
@@ -13,19 +14,28 @@ export class EventsComponent implements OnInit {
   query: any
   
   events=[{
-    coursename:"",
+    coursename: "",
+    eventname: "",
+    eventtype: "",
+    eventabout: "",
+    eventobjective: "",
+    eventoverview: "",
+    eventagenda: "",
+    eventtraining: "",
+    eventfees: "",
+    lastDateReg: "",  
+      fees: "",
+      agenda: "",
+      objectives: "",
+      startdate: "",       
+      enddate: "",
+      image: "",
     regstatus:"",
-    fees :"",
-    agenda:"",
-    objectives: "",
-    startdate: "",
-    enddate: '',
-    image: '',
     creation_date: ""
   }]
 
               
-  constructor(private adminServ:AdminServiceService,private router:Router,private route:ActivatedRoute) { }
+  constructor(private adminServ:AdminServiceService,private router:Router,private route:ActivatedRoute,public auth:AuthService) { }
 
   ngOnInit(): void {
     this.adminServ.getevents().subscribe((data)=>{
@@ -97,28 +107,6 @@ export class EventsComponent implements OnInit {
 
 
 
-  
-  editAccess(){
-    var retrievedObject:any = localStorage.getItem('user1');
-    var user1 = JSON.parse(retrievedObject);
-  
-    return !user1.edit;
-    
-  }
-
-  deleteAccess(){
-    var retrievedObject:any = localStorage.getItem('user1');
-    var user1 = JSON.parse(retrievedObject);
- 
-    return !user1.delete;
-  }
-
-  addAccess(){
-    var retrievedObject:any = localStorage.getItem('user1');
-    var user1 = JSON.parse(retrievedObject);
- 
-    return !user1.add;
-  }
 
 
 

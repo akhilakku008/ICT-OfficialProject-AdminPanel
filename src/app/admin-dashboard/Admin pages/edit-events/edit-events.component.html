@@ -158,44 +158,90 @@
         <div class="user-details">
           <div class="input-box">
             <span class="details">Event Name</span>
-            <input type="text"  class="form-control"  formControlName="name" required name="name" [(ngModel)]="EventItem.coursename">
+            <input type="text"  class="form-control"  formControlName="name" required name="corname"  [(ngModel)]="eventDetails.eventname">
             <small style="color:#D81B60;" *ngIf="name && name.invalid && name.touched">Event Name is required</small>
           </div>
+           
+          <div class="input-box">
+            <span class="details">Course Name</span>
+            <input type="text"  class="form-control" formControlName="corname"  required name="corname"  [(ngModel)]="eventDetails.coursename">
+            <small style="color:#D81B60;" *ngIf="corname && corname.invalid && corname.touched">course Name is required</small>
+          </div>
+
+          <div class="input-box">
+            <span class="details">Course Type</span>
+            <input type="text"  class="form-control"  formControlName="type" required name="corname"  [(ngModel)]="eventDetails.eventtype">
+            <small style="color:#D81B60;" *ngIf="type && type.invalid && type.touched">Event type is required</small>
+          </div>
+
+          
+          <div class="input-box">
+            <span class="details">About</span>
+            <angular-editor  class="form-control"  formControlName="about" required name="corname"  [(ngModel)]="eventDetails.eventabout" required></angular-editor>
+            <small style="color:#D81B60;" *ngIf="about && about.invalid && about.touched">Event about is required</small>
+          </div>
+
+          <div class="input-box">
+            <span class="details">Event Overview</span>
+            <angular-editor  class="form-control"  formControlName="oveview" required name="corname"  [(ngModel)]="eventDetails.eventoverview" required></angular-editor>
+            <small style="color:#D81B60;" *ngIf="oveview && oveview.invalid && oveview.touched">Event overview is required</small>
+          </div>
+
+          <div class="input-box">
+            <span class="details">Event Agenda</span>
+            <angular-editor class="form-control"  formControlName="agenda" required name="corname"  [(ngModel)]="eventDetails.eventagenda" required></angular-editor>
+            <small style="color:#D81B60;" *ngIf="agenda && agenda.invalid && agenda.touched">Event agenda is required</small>
+          </div>
+          
+          <div class="input-box">
+            <span class="details">Event Training</span>
+          
+            <angular-editor  class="form-control"  formControlName="trainining" required name="corname"  [(ngModel)]="eventDetails.eventtraining" required></angular-editor>
+            <small style="color:#D81B60;" *ngIf="trainining && trainining.invalid && trainining.touched">Event training is required</small>
+          </div>
+
+          
+          
           <!-- <small style="color:#D81B60;" *ngIf="title && title.invalid && title.touched">Email is required</small> -->
           <div class="input-box">
-            <span class="details">fees</span>
-            <input type="text"  class="form-control"  formControlName="describe" name="fees" [(ngModel)]="EventItem.fees" required>
-            <small style="color:#D81B60;" *ngIf="describe && describe.invalid && describe.touched">Event Short Description is required</small>
+            <span class="details">Event Fee</span>
+            <input type="text"  class="form-control"  formControlName="fee" required name="fee"  [(ngModel)]="eventDetails.eventfees"  eventsadmin>
+            <small style="color:#D81B60;" *ngIf="fee && fee.invalid && fee.touched">Event fees is required</small>
+          </div>
+
+          <div class="input-box">
+            <span class="details">Last Date of registration</span>
+            <input type="text"  class="form-control"  formControlName="lastDate" required name="fee"  [(ngModel)]="eventDetails.lastDateReg"  eventsadmin>
+            <small style="color:#D81B60;" *ngIf="lastDate && lastDate.invalid && lastDate.touched">Event lastdate of reg is required</small>
           </div>
           
           
           <div class="input-box">
-            <span class="details">Agenda</span>
-            <textarea class="form-control"  formControlName="about" required  name="agenda" [(ngModel)]="EventItem.agenda"></textarea>
+            <span class="details">Event Objective</span>
+           
+            <angular-editor class="form-control"  formControlName="obj" required  name="objectives"  [(ngModel)]="eventDetails.eventobjective" required></angular-editor>
             <!-- <input type="text" class="form-control"  formControlName="about" required> -->
-            <small style="color:#D81B60;" *ngIf="about && about.invalid && about.touched">About event is required</small>
+            <small style="color:#D81B60;" *ngIf="obj && obj.invalid && obj.touched"> event objective is required</small>
           </div>
+
           <div class="input-box">
-            <span class="details">objectives</span>
-            <textarea class="form-control"  formControlName="date" required  name="obj" [(ngModel)]="EventItem.objectives"></textarea>
-            <!-- <input type="text" class="form-control"  formControlName="about" required> -->
-            <small style="color:#D81B60;" *ngIf="date && date.invalid && date.touched">Date and Location Details are required</small>
-          </div>
-          <div class="input-box">
-            <span class="details">Start Date</span>
-            <input type="text"  class="form-control"  formControlName="event" required name="sdate" [(ngModel)]="EventItem.startdate">
-            <small style="color:#D81B60;" *ngIf="event && event.invalid && event.touched">Event date is required</small>
-          </div>
-          <div class="input-box">
-            <span class="details">End Date</span>
-            <input type="text"  class="form-control"  formControlName="event" required  name="sdate" [(ngModel)]="EventItem.enddate">
-            <small style="color:#D81B60;" *ngIf="event && event.invalid && event.touched">Event date is required</small>
+            <span class="details">startdate</span>
+            <input type="date"  class="form-control"  formControlName="startdat" required name="startdate"  [(ngModel)]="eventDetails.startdate">
+            <small style="color:#D81B60;" *ngIf="startdat && startdat.invalid && startdat.touched">Event start date is required</small>
           </div>
           
+          <div class="input-box">
+            <span class="details">End date</span>
+            <input type="date"  class="form-control"  formControlName="enddat" required name="enddate"  [(ngModel)]="eventDetails.enddate">
+            <small style="color:#D81B60;" *ngIf="enddat && enddat.invalid && enddat.touched">Event end date is required</small>
+          </div>
+          
+
           <div class="input-box">
             <span class="details"> Image</span>
-            <input type="file"  class="form-control"  formControlName="img" (change)="createFormData($event)" required>
-            <small style="color:#D81B60;" *ngIf="img && img.invalid && img.touched"> Image is required</small>
+            <img src="http://localhost:3000/{{eventDetails.image}}" width="150px" class="p-2" alt="">
+            <input type="file"  class="form-control"  formControlName="img"  (change)="createFormData($event)"   [(ngModel)]="eventDetails.image" required>
+            <small style="color:#D81B60;" *ngIf="img && img.invalid && img.touched"name="image" > Image is required</small>
           </div>
         </div>
         <div class="button">

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-
+// import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AdminDashboardRoutingModule } from './admin-dashboard-routing.module';
@@ -41,7 +41,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { TodosComponent } from './Admin pages/todos/todos.component';
 import { HttpClientModule } from '@angular/common/http'
-import {AdminServiceService} from './Admin pages/admin-service.service'
+import { AdminServiceService } from './Admin pages/admin-service.service'
+
 
 
 
@@ -85,14 +86,14 @@ import {AdminServiceService} from './Admin pages/admin-service.service'
     CommonModule,
     AdminDashboardRoutingModule,
     FormsModule,
-    CKEditorModule,
+    // CKEditorModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     MatDatepickerModule,
     MatFormFieldModule,
     MatNativeDateModule,
     HttpClientModule,
-
+    AngularEditorModule
   ],
   exports:[
     DashboardComponent,

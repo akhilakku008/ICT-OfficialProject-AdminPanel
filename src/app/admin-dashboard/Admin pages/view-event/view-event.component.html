@@ -147,39 +147,62 @@
                          <h2 class="mb-4">Course Details</h2>
                          <div class="row">
                              <div class="col-xl-5 col-lg-6 text-center">
-                                 <img class="w-100 border-radius-lg shadow-lg mx-auto" src="{{eventItem.image}}" alt="chair">
+                                 <img class="w-100 border-radius-lg shadow-lg mx-auto" src="http://localhost:3000/{{eventItem.image}}" alt="chair">
                                  
           
                            
                              </div>
                              <div class="col-lg-5 mx-auto">
-                                 <h3 class="mt-lg-0 mt-4 fw-bold h3">Event Name</h3>
-                                 <!-- <div class="rating">
-                                     <i class="material-icons text-lg">grade</i>
-                                     <i class="material-icons text-lg">grade</i>
-                                     <i class="material-icons text-lg">grade</i>
-                                     <i class="material-icons text-lg">grade</i>
-                                     <i class="material-icons text-lg">star_outline</i>
-
-                                 </div> -->
+                                
+                            
+                        
+                              
+                                 <h3 class="mt-lg-0 mt-4 fw-bold h3">Course Name</h3>
                                  <h2 class="text-black fw-bolder">{{eventItem.coursename}}</h2>
+                                 <br>
+                                 <h3 class="mt-lg-0 mt-4 fw-bold h3">Event Name</h3>
+                                 <h2 class="text-black fw-bolder">{{eventItem.eventname}}</h2>
+                                 <br>
+                                 <h3 class="mt-lg-0 mt-4 fw-bold h3">Event type</h3>
+                                 <h2 class="text-black fw-bolder">{{eventItem.eventtype}}</h2>
+                                 <br>
+                                 <h3 class="mt-lg-0 mt-4 fw-bold h3">Event Fees</h3>
+                                 <h2 class="text-black fw-bolder">{{eventItem.eventfees}}</h2>
                                  <br>
                                  <!-- <h4> fees</h4> -->
                                  <h4 class="mb-0 mt-3 fw-bold h3">Start date</h4>
                                  <h2 class="text-black fw-bolder">{{eventItem.startdate}}</h2>
                                  <h3 class="fw-bold h3">End date</h3>
                                  <h2 class="text-black fw-bolder">{{eventItem.enddate}}</h2>
+                                 <h3 class="fw-bold h3">Last date of registration</h3>
+                                 <h2 class="text-black fw-bolder">{{eventItem.lastDateReg}}</h2>
+
                                  <h4 class="mb-0 mt-3 fw-bold h3">creation date</h4>
                                  <h2 class="text-black fw-bolder">{{eventItem.creation_date}}</h2>
                                  <h4 class="mb-0 mt-3 fw-bold h3">Agenda</h4>
-                                 <p name="" id="" cols="30" rows="10">{{eventItem.agenda}}</p>
+                                 <p name="" id="" cols="30" rows="10" [innerText]="eventItem.eventagenda"></p>
                                <br>
+                               <label class="mt-4 fw-bold fw-bold h3">About</label>
+                               <ul>
+                                   <h2 class="text-black" [innerText]="eventItem.eventabout"></h2>
+                               </ul>
 
 
                                  <label class="mt-4 fw-bold fw-bold h3">Objectives</label>
                                  <ul>
-                                     <h2 class="text-black">{{eventItem.objectives}}</h2>
+                                     <h2 class="text-black" [innerText]="eventItem.eventobjective"></h2>
                                  </ul>
+
+                                 
+                                 <label class="mt-4 fw-bold fw-bold h3">Overview</label>
+                                 <ul>
+                                     <h2 class="text-black" [innerText]="eventItem.eventoverview"></h2>
+                                 </ul>
+                                 <label class="mt-4 fw-bold fw-bold h3" >Event training</label>
+                                 <ul>
+                                     <h2 class="text-black" [innerText]="eventItem.eventtraining"></h2>
+                                 </ul>
+                                 
                                  
                                      
                                  </div>

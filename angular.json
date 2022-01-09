@@ -44,6 +44,7 @@
              "src/assets/admin/css/material-dashboard.css",
              "node_modules/sweetalert2/src/sweetalert2.scss"
            
+           
             ],
             "scripts": [
               "src/assets/js/vendor/bootstrap.min.js",
@@ -66,6 +67,7 @@
               "src/assets/admin/js/plugins/smooth-scrollbar.min.js",
               "src/assets/admin/js/plugins/chartjs.min.js",
               "node_modules/jquery/dist/jquery.min.js"
+         
             ]
           },
           "configurations": {

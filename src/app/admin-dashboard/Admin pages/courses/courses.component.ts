@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import {AdminServiceService} from '../admin-service.service'
-import { ActivatedRoute,Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../auth.service';
+
 
 @Component({
   selector: 'app-courses',
@@ -16,6 +18,7 @@ export class CoursesComponent implements OnInit {
   query: any;
 
   courses: any;
+  status :any
 
   // index:any
 
@@ -24,14 +27,28 @@ export class CoursesComponent implements OnInit {
   // }
   // Coursemain:any
   
-  constructor(private adminServ: AdminServiceService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private adminServ: AdminServiceService, private router: Router, private route: ActivatedRoute, public auth: AuthService) {
+    console.log("edit token",auth.edit)
+   }
+  
   
 
   ngOnInit(): void {
-     this.adminServ.getCourses().subscribe((data)=> {
-       this.courses = data
+    this.adminServ.getCourses().subscribe((data) => {
+         this.courses = data
        console.log(data)
       this.router.navigate(["courses"])
+
+      let myContainer = <HTMLElement>document.getElementById('reg');
+
+       if (data.Reg_Status == 0) {
+        myContainer.innerHTML = "closed"
+      } else if (data.Reg_Status == 1) {
+        myContainer.innerHTML = "open"    
+      }
+      else if (data.reg_Status == 2) {
+        myContainer.innerHTML = "comming soon"
+      }
     })
 
   }
@@ -123,28 +140,5 @@ export class CoursesComponent implements OnInit {
   }
 
 
-
-  
-//  editAccess(){
-//   var retrievedObject:any = localStorage.getItem('user1');
-//   var user1 = JSON.parse(retrievedObject);
-
-//   return !user1.edit;
-  
-// }
-
-// deleteAccess(){
-//   var retrievedObject:any = localStorage.getItem('user1');
-//   var user1 = JSON.parse(retrievedObject);
-
-//   return !user1.delete;
-// }
-  
-// addAccess(){
-//   var retrievedObject:any = localStorage.getItem('user1');
-//   var user1 = JSON.parse(retrievedObject);
-
-//   return !user1.add;
-// }
 
 }

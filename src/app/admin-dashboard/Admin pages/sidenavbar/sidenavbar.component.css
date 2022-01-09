@@ -19,3 +19,7 @@
 .ms-2{
   font-size: 1.2rem;
 }
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}

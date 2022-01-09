@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AuthService } from '../../auth.service';
 import {AdminServiceService} from '../admin-service.service'
 
 @Component({
@@ -25,7 +26,7 @@ export class AdminUserComponent implements OnInit {
   //   superadmin: false,
   // }
   submitted : boolean=false;
-  constructor(private adminServ:AdminServiceService,private router:Router,private route:ActivatedRoute) { }
+  constructor(private adminServ:AdminServiceService,private router:Router,private route:ActivatedRoute,public auth:AuthService) { }
 
   ngOnInit(): void {
    

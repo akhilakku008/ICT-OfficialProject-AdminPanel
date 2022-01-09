@@ -3,6 +3,7 @@ import * as XLSX from 'xlsx';
 import Swal from 'sweetalert2';
 import {AdminServiceService} from '../admin-service.service';
 import { ActivatedRoute,Router } from '@angular/router';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-corporate',
@@ -60,7 +61,7 @@ cptmembership=[{
 }
 ]
 
-  constructor(private adminServ:AdminServiceService,private router:Router, private route: ActivatedRoute) { }
+  constructor(private adminServ:AdminServiceService,private router:Router, private route: ActivatedRoute, public auth:AuthService) { }
   CorporateApplns:any;
 
   ngOnInit(): void {

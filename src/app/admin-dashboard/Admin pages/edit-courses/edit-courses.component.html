@@ -158,19 +158,43 @@
         <div class="user-details">
           <div class="input-box">
             <span class="details">Course Title</span>
-            <input type="text"  class="form-control"  formControlName="title" required  name="title" [(ngModel)]="course.courseTitle">
+            <input type="text"  class="form-control"  formControlName="title" required  name="title" [(ngModel)]="course.courseTitle"> 
             <small style="color:#D81B60;" *ngIf="title && title.invalid && title.touched">Title is required</small>
           </div>
+
+          <div class="input-box">
+            <!-- for better frontend ui experience.. short tagname of type -->
+            <span class="details">Course ShortName</span>  
+            <input type="text"  class="form-control"  formControlName="name" required  name="title" [(ngModel)]="course.courseShortName"> 
+            <small style="color:#D81B60;" *ngIf="name && name.invalid && name.touched">Title is required</small>
+          </div>
+
+          <div class="input-box">
+            <!-- for better frontend ui experience.. short tagname of type -->
+            <span class="details">Course Type</span>  
+            <input type="text"  class="form-control"  formControlName="type" required  name="title" [(ngModel)]="course.courseType"> 
+            <small style="color:#D81B60;" *ngIf="type && type.invalid && type.touched">Title is required</small>
+          </div>
+          
+       
+          
+
           <!-- <small style="color:#D81B60;" *ngIf="title && title.invalid && title.touched">Email is required</small> -->
           <div class="input-box">
             <span class="details">Short Description</span>
-         
-            <input type="text"  class="form-control"  formControlName="describe" name="shortDes" [(ngModel)]="course.shortDesc" required>
-            <small style="color:#D81B60;" *ngIf="describe && describe.invalid && describe.touched">Short Description is required</small>
+            <!-- <input type="text"  class="form-control"  formControlName="describe" name="short" [(ngModel)]="course.shortDesc" required> -->
+            <angular-editor formControlName="short" class="form-control"  [(ngModel)]="course.shortDesc" name="sd" required></angular-editor>
+            <small style="color:#D81B60;" *ngIf="short && short.invalid && short.touched">Short Description is required</small>
           </div>
+          <!-- <div class="input-box">
+            <span class="details">About</span>
+         
+            <angular-editor formControlName="about" [(ngModel)]="course.LongDes" required></angular-editor>
+            <small style="color:#D81B60;" *ngIf="about && about.invalid && about.touched">Short Description is required</small>
+          </div> -->
           <div class="input-box">
             <span class="details">Registration Status</span>
-            <select class="form-select" style="width:100%; height:3em" formControlName="status" name="reg_status" [(ngModel)]="course.Reg_Status" required> 
+            <select class="form-select" style="width:100%; height:3em" name="reg"  [(ngModel)]="course.Reg_Status" formControlName="status" required> 
               <option selected>Choose from the list</option>
               <option value="0">Registration Closed</option>
               <option value="1">Registration Open</option>
@@ -178,15 +202,15 @@
             </select>
             <small style="color:#D81B60;" *ngIf="status && status.invalid && status.touched">Registration Status is required</small>
           </div>
-
-          <!-- <div class="input-box">
+<!-- 
+          <div class="input-box">
             <span class="details">Rating</span>
             <input type="text" placeholder="Rating between 1 to 5" class="form-control"  formControlName="rate" required>
             <small style="color:#D81B60;" *ngIf="rate && rate.invalid && rate.touched">Rating is required</small>
           </div> -->
           <div class="input-box">
             <span class="details">Course Category</span>
-            <select class="form-select" style="width:100%; height:3em" formControlName="category" name="category" [(ngModel)]="course.category"  required> 
+            <select class="form-select" style="width:100%; height:3em" formControlName="category" name="cat" [(ngModel)]="course.category" required> 
               <option selected>Choose from the list</option>
               <option value="Retail">Retail</option>
               <option value="Institutional">Institutional</option>
@@ -194,53 +218,134 @@
             </select>
             <small style="color:#D81B60;" *ngIf="category && category.invalid && category.touched">Course Category is required</small>
           </div>
+
           <div class="input-box">
             <span class="details">About Course</span>
-            <!-- <ckeditor name="myckeditor" debounce="300" [editor]="editor"></ckeditor> -->
-
-            <input type="text" class="form-control"  formControlName="about" name="longdesc" [(ngModel)]="course.LongDes" required>
+            <angular-editor formControlName="about" class="form-control"  [(ngModel)]="course.courseAbout" name="sd2" required></angular-editor>
+            <!-- <input type="text" class="form-control"  formControlName="about" required> -->
             <small style="color:#D81B60;" *ngIf="about && about.invalid && about.touched">About Course is required</small>
           </div>
+
           <div class="input-box">
-            <span class="details">Important Dates</span>
-            <textarea class="form-control"  formControlName="date" [(ngModel)]="course.dates" name="dates" required></textarea>
-            <!-- <input type="text" class="form-control"  formControlName="about" required> -->
-            <small style="color:#D81B60;" *ngIf="date && date.invalid && date.touched">Important dates are required</small>
+            <span class="details">Entrance exam date</span>
+            <input type="date"  class="form-control"  formControlName="entrance" required  name="date" [(ngModel)]="course.EntranceExamDate"> 
+            <!-- <angular-editor formControlName="date" class="form-control"  [(ngModel)]="course.dates" name="dat" required></angular-editor> -->
+            <small style="color:#D81B60;" *ngIf="entrance && entrance.invalid && entrance.touched">Important dates are required</small>
+          
           </div>
+<!-- copied -->
           <div class="input-box">
-            <span class="details">Course Eligibility</span>
-            <textarea class="form-control"  formControlName="eligible" [(ngModel)]="course.eligibility" name="eligi" required></textarea>
-            <!-- <input type="text" class="form-control"  formControlName="eligible" required> -->
-            <small style="color:#D81B60;" *ngIf="eligible && eligible.invalid && eligible.touched">Course Eligibility is required</small>
+            <span class="details">Commencement Date</span>
+            <input type="date"  class="form-control"  formControlName="commencement" required  name="date" [(ngModel)]="course.commencementDate"> 
+            <!-- <angular-editor formControlName="date" class="form-control"  [(ngModel)]="course.dates" name="dat" required></angular-editor> -->
+            <small style="color:#D81B60;" *ngIf="commencement && commencement.invalid && commencement.touched">Important dates are required</small>
+          
           </div>
+
+          <div class="input-box">
+            <span class="details">Orientation Date</span>
+            <input type="date"  class="form-control"  formControlName="orientation" required  name="date" [(ngModel)]="course.orientationDate"> 
+            <!-- <angular-editor formControlName="date" class="form-control"  [(ngModel)]="course.dates" name="dat" required></angular-editor> -->
+            <small style="color:#D81B60;" *ngIf="orientation && orientation.invalid && orientation.touched">Important dates are required</small>
+          
+          </div>
+
+          <div class="input-box">
+            <span class="details">Course Starting Date</span>
+            <input type="date"  class="form-control"  formControlName="sdate" required  name="sdat" [(ngModel)]="course.startDate"> 
+            <!-- <angular-editor formControlName="date" class="form-control"  [(ngModel)]="course.dates" name="dat" required></angular-editor> -->
+            <small style="color:#D81B60;" *ngIf="sdate && sdate.invalid && sdate.touched">Important dates are required</small>
+          </div>
+
+      
           <div class="input-box">
             <span class="details">Course Fee</span>
-            <input type="text"  class="form-control"  formControlName="fee" [(ngModel)]="course.course_fee" name="fee" required>
+            <input type="text"  class="form-control"  formControlName="fee" name="fee" [(ngModel)]="course.courseFee"  required>
             <small style="color:#D81B60;" *ngIf="fee && fee.invalid && fee.touched">Course Fee is required</small>
           </div>
+
           <div class="input-box">
+            <span class="details">Course Registration Fee</span>
+            <input type="text"  class="form-control"  formControlName="regfee"  name="regfee" [(ngModel)]="course.courseRegFee" required>
+            <small style="color:#D81B60;" *ngIf="regfee && regfee.invalid && regfee.touched">Course Fee is required</small>
+          </div>
+ 
+          <!-- <div class="input-box">
             <span class="details">Entrance Exam Details</span>
-            <textarea class="form-control"  formControlName="entrance" [(ngModel)]="course.aptitude_test" name="entranceTest" required></textarea>
-            <!-- <input type="text"  class="form-control"  formControlName="entrance" required> -->
+           
+            <angular-editor  formControlName="entrance" class="form-control"    [(ngModel)]="course.aptitude_test" name="test" required></angular-editor>
+            
             <small style="color:#D81B60;" *ngIf="entrance && entrance.invalid && entrance.touched">Entrance Exam Details is required</small>
-          </div>
+          </div> -->
+
           <div class="input-box">
-            <span class="details">objectives</span>
-            <textarea class="form-control"  formControlName="refund" name="obj" [(ngModel)]="course.Objectives" required></textarea>
-            <!-- <input type="text"  class="form-control"  formControlName="refund" required> -->
-            <small style="color:#D81B60;" *ngIf="refund && refund.invalid && refund.touched">Refund Policy is required</small>
+            <span class="details">Course Duration</span>
+            <input type="text"  class="form-control"  formControlName="duration"   name="regDur" [(ngModel)]="course.courseDuration" required>
+            <small style="color:#D81B60;" *ngIf="duration && duration.invalid && duration.touched">Course Fee is required</small>
           </div>
+              
+          <!-- <div class="input-box">
+            <span class="details">Course Duration</span>
+            <input type="text"  class="form-control"   name="regDur" [(ngModel)]="course.courseDuration"  required> -->
+            <!-- <small style="color:#D81B60;" *ngIf="fee && fee.invalid && fee.touched">Course Fee is required</small> -->
+          <!-- </div> -->
+            
+          <div class="input-box">
+            <span class="details">Objectives or Agenda</span>
+            <!-- <textarea class="form-control"  formControlName="refund" name="obj" [(ngModel)]="course.Objectives"   required></textarea> -->
+            <!-- <angular-editor [placeholder]="'Enter text here...'"name="test" ></angular-editor> -->
+            <angular-editor formControlName="agenda" class="form-control"   [(ngModel)]="course.courseAgenda"   name="obj" required></angular-editor>
+            <small style="color:#D81B60;" *ngIf="agenda && agenda.invalid && agenda.touched">Refund Policy is required</small>
+          </div>
+
+          <!-- sample-->
+
+          <div class="input-box">
+            <span class="details">Sample entrance Question</span>
+            <input type="text"  class="form-control"  formControlName="sample"   name="que" [(ngModel)]="course.samplequestion" required>
+            <small style="color:#D81B60;" *ngIf="sample && sample.invalid && sample.touched">Course Fee is required</small>
+          </div>
+<!--           
+          <div class="input-box">
+            <span class="details">Sample entrance Question</span>
+            <input type="text"  class="form-control"   name="que" [(ngModel)]="course.samplequestion"  required> -->
+            <!-- <small style="color:#D81B60;" *ngIf="fee && fee.invalid && fee.touched">Course Fee is required</small> -->
+          <!-- </div> -->
+
+          <div class="input-box">
+            <span class="details">Placement List</span>
+            <input type="text"  class="form-control"  formControlName="placement"   name="placelist" [(ngModel)]="course.placementlist" required>
+            <small style="color:#D81B60;" *ngIf="placement && placement.invalid && placement.touched">Course Fee is required</small>
+          </div>
+<!--           
+          <div class="input-box">
+            <span class="details">Placement List</span>
+            <input type="text"  class="form-control"   name="placelist" [(ngModel)]="course.placementlist"  required> -->
+            <!-- <small style="color:#D81B60;" *ngIf="fee && fee.invalid && fee.touched">Course Fee is required</small> -->
+          <!-- </div> -->
+
+          <div class="input-box">
+            <span class="details">Internship Certificate</span>
+            <input type="text"  class="form-control"  formControlName="intern"   name="intern" [(ngModel)]="course.internshipcertificate"  required>
+            <small style="color:#D81B60;" *ngIf="intern && intern.invalid && intern.touched">Course Fee is required</small>
+          </div>
+          
+          <!-- <div class="input-box">
+            <span class="details">Internship Certificate</span>
+            <input type="text"  class="form-control"   name="intern" [(ngModel)]="course.internshipcertificate"  required> -->
+            <!-- <small style="color:#D81B60;" *ngIf="fee && fee.invalid && fee.touched">Course Fee is required</small> -->
+          <!-- </div> -->
+         
+
           <div class="input-box">
             <span class="details">Course Image</span>
-            <div class="col-lg-5">
-              <img src="http://localhost:3000/{{course.courseImage}}" width="100px" alt="" class="m-2">
-            </div>
-            <input type="file"  class="form-control"  formControlName="img" name="file1" (change)="courseImage($event)" required>
+            <input type="file"  class="form-control"  formControlName="img" name="file"  (change)="courseImage($event)" required>
             <small style="color:#D81B60;" *ngIf="img && img.invalid && img.touched">Course Image is required</small>
           </div>
         
   
-        <div class="input-box">
+  
+        <!-- <div class="input-box">
           <span class="details">Course Delivery</span>
           <div class="col-lg-5">
             <img src="http://localhost:3000/{{course.course_delivery}}" width="100px" alt="" class="m-2">
@@ -264,12 +369,12 @@
       <span class="details">Knowledge Partner</span>
       <div class="col-lg-5">
         <img src="http://localhost:3000/{{course.knowledge_partner}}" width="100px" alt="" class="m-2">
-        <!-- <img src="http://localhost:3000/{{course.knowledge_partner}}" alt=""> -->
+       
       </div>
       <input  type="file"  class="form-control" name="file4" formControlName="knowledge" (change)="courseKnowledge($event)"  required>
       <small style="color:#D81B60;" *ngIf="knowledge && knowledge.invalid && knowledge.touched">Knowledge Partner is required</small>
     </div>
-  
+   -->
   
   <!-- <div class="input-box">
     <span class="details">Sponsour Partner</span>
@@ -289,7 +394,9 @@
 
         
         <div class="button">
-          <button  routerLink="/adminpage/courses" type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2" (click)='UpdateCourse()' *ngIf='Active && inactive'>Update</button>
+          <button  routerLink="/adminpage/courses" type="submit" class="btn bg-gradient-danger w-25 my-4 mb-2">Cancel</button>
+          <button  routerLink="/adminpage/courses" type="submit" class="btn bg-gradient-success w-25 my-4 mb-2 m-3" (click)='UpdateCourse()' *ngIf='Active && inactive'>Update</button>
+          
         </div>
       </form>
       </div>

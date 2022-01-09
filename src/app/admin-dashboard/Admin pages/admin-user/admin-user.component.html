@@ -162,7 +162,7 @@
                               <div class="ms-auto my-auto mt-lg-0 mt-4">
                                    <div class="ms-auto my-auto">
                                   
-                             <a class="btn bg-gradient-primary btn-sm mb-0 text-white" routerLink="/adminpage/add-admin-user" (click)="addAdmin()" >+&nbsp; New Admin</a>
+                             <a class="btn bg-gradient-primary btn-sm mb-0 text-white" routerLink="/adminpage/add-admin-user"  *ngIf="auth.loggedIn() && auth.add ==='true'||auth.loggedIn() && auth.superadmin === 'true'" (click)="addAdmin()" >+&nbsp; New Admin</a>
                                          
                                          
                                    
@@ -223,8 +223,8 @@
                     </td> -->
                     <td class="align-center text-center act-align">
                         <i class="fas fa-eye text-info" data-bs-toggle="tooltip" data-bs-placement="left" title="View the Course"  (click)="ViewUser(admin)"></i>
-                        <i class="fas fa-edit ms-3 text-warning" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit the Course" (click)="editUser(admin)"></i>
-                        <i class="fas fa-trash ms-3 text-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete the Course" (click)="DeleteUser(admin)"></i>
+                        <i class="fas fa-edit ms-3 text-warning" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit the Course"  *ngIf="auth.loggedIn() && auth.edit ==='true'||auth.loggedIn() && auth.superadmin === 'true'" (click)="editUser(admin)"></i>
+                        <i class="fas fa-trash ms-3 text-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete the Course"  *ngIf="auth.loggedIn() && auth.delete ==='true'||auth.loggedIn() && auth.superadmin === 'true'" (click)="DeleteUser(admin)"></i>
 
                     </td>
                   </tr>

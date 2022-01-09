@@ -157,7 +157,7 @@
 
                               <div class="ms-auto my-auto mt-lg-0 mt-4">
                                    <div class="ms-auto my-auto">
-                                    <a class="btn bg-gradient-primary btn-sm mb-0 text-white" (click)="addTestimonial()"   >+&nbsp; New Testimony</a>
+                                    <a class="btn bg-gradient-primary btn-sm mb-0 text-white" (click)="addTestimonial()"  *ngIf="auth.loggedIn() && auth.add ==='true'||auth.loggedIn() && auth.superadmin === 'true'"  >+&nbsp; New Testimony</a>
                                     
                                     
                                 </div>
@@ -215,8 +215,8 @@
                     </td> -->
                     <td class="align-center text-center act-align">
                         <i class="fas fa-eye text-info" data-bs-toggle="tooltip" data-bs-placement="left" title="View the Course" routerLink="/adminpage/view-testimony" (click)="Viewtesti(testi)"></i>
-                        <i class="fas fa-edit ms-3 text-warning" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit the Course" routerLink="/adminpage/edit-testimony" (click)="edittesti(testi)"></i>
-                        <i class="fas fa-trash ms-3 text-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete the Course" (click)="Deletetesti(testi)"></i>
+                        <i class="fas fa-edit ms-3 text-warning" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit the Course" routerLink="/adminpage/edit-testimony" *ngIf="auth.loggedIn() && auth.edit ==='true'||auth.loggedIn() && auth.superadmin === 'true'" (click)="edittesti(testi)"></i>
+                        <i class="fas fa-trash ms-3 text-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete the Course" *ngIf="auth.loggedIn() && auth.delete ==='true'||auth.loggedIn() && auth.superadmin === 'true'" (click)="Deletetesti(testi)"></i>
 
                     </td>
                   </tr>

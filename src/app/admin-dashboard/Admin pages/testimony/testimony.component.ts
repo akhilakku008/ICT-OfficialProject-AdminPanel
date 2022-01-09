@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {AdminServiceService} from '../admin-service.service'
 import Swal from 'sweetalert2';
+import { AuthService } from '../../auth.service';
 @Component({
   selector: 'app-testimony',
   templateUrl: './testimony.component.html',
@@ -22,7 +23,7 @@ searchText:any;
 //   }
 // ]
   testimonials:any
-  constructor(private adminServe:AdminServiceService,private router:Router,private route:ActivatedRoute) { }
+  constructor(private adminServe:AdminServiceService,private router:Router,private route:ActivatedRoute,public auth:AuthService) { }
 
   ngOnInit(): void {
     

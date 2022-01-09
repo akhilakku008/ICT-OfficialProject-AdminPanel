@@ -254,14 +254,14 @@
                                                            
                                                           <div class="ct_align ">
                                                             <div class="form-check form-switch" style="margin-left: 30%;" name="superadmin" [(ngModel)]="adminUser.superadmin">
-                                                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="superadmin" [(ngModel)]="adminUser.superadmin">
+                                                                <input class="form-check-input" type="checkbox" role="switch" checked = true id="flexSwitchCheckDefault" name="superadmin" [(ngModel)]="adminUser.superadmin">
                                                                 <label class="form-check-label text-black" for="flexSwitchCheckDefault" style="margin-right: 80%;position: relative;top: -6px; ">Full Access</label>
                                                               </div>
                                                            
                                                         
                                                         
                                                             <div class="form-check form-switch" style="margin-left: 30%;">
-                                                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="add" [(ngModel)]="adminUser.add">
+                                                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"  name="isCheckBox" [id]="add" [(ngModel)]="adminUser.add">
                                                                 <label class="form-check-label text-black" for="flexSwitchCheckDefault"style="margin-right: 80%;position: relative;top: -6px; ">Add Access</label>
                                                               </div>
                                                             

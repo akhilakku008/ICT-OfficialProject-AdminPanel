@@ -18,6 +18,7 @@ export class AddAdminUserComponent implements OnInit {
   alertMsg1="Error Occured";
    
   submitted = false
+  add:any
    
   adminUser = {
     username       : '',
@@ -25,10 +26,10 @@ export class AddAdminUserComponent implements OnInit {
     firstname      : '',
     lastname       : '',
     email          : '',
-    superadmin     : false,
+    superadmin     : false ,
     add            : true,
     edit           : true,
-    delete         : true
+    delete         : true,
   }
 
   selectedFile:any=null;
@@ -111,7 +112,15 @@ get usrname()
   ngOnInit(): void {
   }
 
-  addUser(){
+  addUser() {
+    // let element = <HTMLInputElement>document.getElementById('add');
+    // let isChecked = element.checked //true
+    // if (isChecked) {
+    //   this.adminUser.add = true
+    // } else {
+    //   this.adminUser.add =false
+    // }
+
     this.adminServ.newAdminUser( this.adminUser).subscribe(
       response => {
         if (response) {

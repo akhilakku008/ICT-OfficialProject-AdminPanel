@@ -11,16 +11,22 @@ import {AdminServiceService} from '../admin-service.service'
 })
 export class EditEventsComponent implements OnInit {
     
-  EventItem = {
+  eventDetails = {
     coursename: "",
-    regstatus: "",
-    fees: "",
-    agenda: "",
-    objectives: "",
-    startdate: "",       
-    enddate: '',
-    image: "",
-    creation_date:Date
+    eventname: "",
+    eventtype: "",
+    eventabout: "",
+    eventobjective: "",
+    eventoverview: "",
+    eventagenda: "",
+    eventtraining: "",
+    eventfees: "",
+    lastDateReg: "",  
+      startdate: "",       
+      enddate: "",
+      image: "",
+    regstatus:"",
+    creation_date: ""
   }
 
   isAlert=false;
@@ -40,16 +46,20 @@ export class EditEventsComponent implements OnInit {
     this.fd.append('image', this.selectedFile, this.selectedFile.name);
    }
 
-  AddeventForm=new FormGroup({
-    name:new FormControl('',[Validators.required]),
-    describe:new FormControl('',[Validators.required]),
-    status:new FormControl('',[Validators.required]),
-    rate:new FormControl('',[Validators.required]),
-    category:new FormControl('',[Validators.required]),
-    about:new FormControl('',[Validators.required]),
-    date:new FormControl('',[Validators.required]),
-    coordinator:new FormControl('',[Validators.required]),
-    event:new FormControl('',[Validators.required]),
+  
+   AddeventForm=new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    corname: new FormControl('', [Validators.required]),
+    about: new FormControl('', [Validators.required]),
+    type: new FormControl('', [Validators.required]),
+    oveview: new FormControl('', [Validators.required]),
+    agenda: new FormControl('', [Validators.required]),
+    trainining: new FormControl('', [Validators.required]),
+    fee: new FormControl('', [Validators.required]),
+    lastDate: new FormControl('', [Validators.required]),
+    obj: new FormControl('', [Validators.required]),
+    startdat: new FormControl('', [Validators.required]),
+    enddat: new FormControl('', [Validators.required]),
     img:new FormControl('',[Validators.required]),
     
    
@@ -65,26 +75,50 @@ export class EditEventsComponent implements OnInit {
   {
     return this.AddeventForm.get('name');
   }
-  get describe()
+  get corname()
   {
-    return this.AddeventForm.get('describe');
+    return this.AddeventForm.get('corname');
   }
  
+  get type()
+  {
+    return this.AddeventForm.get('type');
+  }
+  get oveview()
+  {
+    return this.AddeventForm.get('oveview');
+  }
+  get agenda()
+  {
+    return this.AddeventForm.get('agenda');
+  }
+  get trainining()
+  {
+    return this.AddeventForm.get('trainining');
+  }
+  get fee()
+  {
+    return this.AddeventForm.get('fee');
+  }
+  get lastDate()
+  {
+    return this.AddeventForm.get('lastDate');
+  }
+  get obj()
+  {
+    return this.AddeventForm.get('obj');
+  }
+  get startdat()
+  {
+    return this.AddeventForm.get('startdat');
+  }
+  get enddat()
+  {
+    return this.AddeventForm.get('enddat');
+  }
   get about()
   {
     return this.AddeventForm.get('about');
-  }
-  get date()
-  {
-    return this.AddeventForm.get('date');
-  }
-  get coordinator()
-  {
-    return this.AddeventForm.get('coordinator');
-  }
-  get event()
-  {
-    return this.AddeventForm.get('event');
   }
   get img()
   {
@@ -97,7 +131,7 @@ export class EditEventsComponent implements OnInit {
    
     let eventId = localStorage.getItem("EditEvent");
     this.adminServ.getevent(eventId).subscribe((data) => {
-      this.EventItem = JSON.parse(JSON.stringify(data));
+      this.eventDetails = JSON.parse(JSON.stringify(data));
       // this.imgPrev = this.eventItem.image;
       // this.ifActive = true;
 
@@ -106,7 +140,7 @@ export class EditEventsComponent implements OnInit {
   }
   editevent() {
   console.log("data arrived at edit fn")     
-    this.adminServ.editEvent(this.EventItem)
+    this.adminServ.editEvent(this.eventDetails)
       .subscribe(
         response => {
           if (response) {

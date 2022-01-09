@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AnyObject } from 'chart.js/types/basic';
+import { Router } from '@angular/router';
+import { AuthService } from '../../auth.service';
+
 
 @Component({
   selector: 'app-sidenavbar',
@@ -19,7 +21,7 @@ export class SidenavbarComponent implements OnInit {
   login = false
   logout= true
 
-  constructor() { }
+  constructor(private _router:Router,public auth:AuthService) { }
 
   
 
@@ -49,7 +51,21 @@ export class SidenavbarComponent implements OnInit {
       case 3: 'tab3';
         return 
     }
-
-}
+    
+   }
+  
+  logoutuser() {
+    localStorage.removeItem('token')
+    localStorage.removeItem('superadmin')
+    localStorage.removeItem('add')
+    localStorage.removeItem('delete')
+    localStorage.removeItem('edit')
+    this._router.navigate(['adminpage/login'])
+  }
+     
+  //  loggeduser ()
+  //    {
+  //      this._router.navigate(['/add'])
+  //    }
 
 }

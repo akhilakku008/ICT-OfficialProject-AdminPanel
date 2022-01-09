@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {AdminServiceService} from '../admin-service.service'
 import Swal from 'sweetalert2';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-staffs',
@@ -20,7 +21,7 @@ export class StaffsComponent implements OnInit {
   // about: String,
   // email :String,
   // role:Boolean
-  constructor(private adminServ:AdminServiceService,private router:Router,private route:ActivatedRoute) { }
+  constructor(private adminServ:AdminServiceService,private router:Router,private route:ActivatedRoute,public auth:AuthService) { }
 
   ngOnInit(): void {
     this.adminServ.getstaffs().subscribe((data)=>{
@@ -91,29 +92,7 @@ export class StaffsComponent implements OnInit {
 
    
  }
-  
- 
-//  editAccess(){
-//   var retrievedObject:any = localStorage.getItem('user1');
-//   var user1 = JSON.parse(retrievedObject);
 
-//   return !user1.edit;
-  
-// }
-
-// deleteAccess(){
-//   var retrievedObject:any = localStorage.getItem('user1');
-//   var user1 = JSON.parse(retrievedObject);
-
-//   return !user1.delete;
-// }
-  
-//   addAccess() {
-//     var retrievedObject: any = localStorage.getItem('user1');
-//     var user1 = JSON.parse(retrievedObject);
-//   }
-  
-  
   
   
 }

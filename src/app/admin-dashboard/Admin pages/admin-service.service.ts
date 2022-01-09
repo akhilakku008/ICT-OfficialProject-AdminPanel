@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http' 
+import {Todo} from '../Admin pages/Todomodel/todomodel'
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminServiceService {
+
+  todoList: Todo[] = []
 
   constructor(private http: HttpClient) { }
   
@@ -209,6 +212,21 @@ deleteuser(data:any){
 }
 
 
+  // !Todos
+  addTodo(title:any) {
+    let id = this.todoList.length + 2;
+
+    const item: Todo = {
+      id: id,
+      isCompleted: false,
+      isFavorite: false,
+      date: new Date(),
+      title: title
+    }
+    this.todoList.unshift(item);
+  }
+  
+  
 
 
     

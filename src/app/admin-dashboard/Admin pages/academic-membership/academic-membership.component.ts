@@ -3,6 +3,7 @@ import * as XLSX from 'xlsx';
 import Swal from 'sweetalert2';
 import {AdminServiceService} from '../admin-service.service';
 import { ActivatedRoute,Router } from '@angular/router';
+import { AuthService } from '../../auth.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class AcademicMembershipComponent implements OnInit {
   searchText: any;
   AcademicApplns : any;
 
-  constructor(private adminServ:AdminServiceService,private router:Router, private route: ActivatedRoute) { }
+  constructor(private adminServ:AdminServiceService,private router:Router, private route: ActivatedRoute,public auth:AuthService) { }
 
  
 

@@ -231,7 +231,7 @@
                                          
                                           <td class="align-center text-center act-align">
                                             
-                                            <i class="fas fa-trash ms-3 text-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete the registered user" (click)="deleteuser(RegsiteredUser)"></i>
+                                            <i class="fas fa-trash ms-3 text-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete the registered user" *ngIf="auth.loggedIn() && auth.delete ==='true'||auth.loggedIn() && auth.superadmin === 'true'" (click)="deleteuser(RegsiteredUser)"></i>
                                           </td>
                                       </tr>
                                       

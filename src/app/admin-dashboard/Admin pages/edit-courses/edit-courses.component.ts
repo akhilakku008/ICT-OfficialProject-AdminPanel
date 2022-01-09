@@ -16,24 +16,33 @@ export class EditCoursesComponent implements OnInit {
 
 
   course:any ={
-    courseTitle            : '',
-    courseImage            : '',
-    shortDesc              : '',
-    LongDes                 : '',
-    Reg_Status              : 1 ,
-    Objectives              : '',
-    category                : '',
-    Rating                  : '',
-    about_course            : '',
-    dates                   : '' ,
-    eligibility             : '',
-    course_fee              : '',
-    aptitude_test           : '',
-    course_delivery         : '',
-    internship_partner      : '',
-    knowledge_partner       : '',
-    index                   : 0,
-    active                  : true 
+    courseTitle: "",
+    courseShortName: "",
+    courseType: "", //to be added
+    courseImage: "",
+    courseAbout: "", // is same as LongDes
+    courseAgenda: "",
+    courseFee: "",
+    EntranceExamDate : "",
+    commencementDate : "",
+    orientationDate : "",
+    category : "",
+    startDate : "",
+    Objectives: "",
+    courseRegFee : "",
+    courseDuration : "",
+    Reg_Status: 1,
+    samplequestion : "",
+    placementlist : "",
+    // samplecertificate: String,
+    internshipcertificate : "",
+    shortDesc : "",
+    // LongDes : "",
+    // course_delivery : "",
+    // internship_partner : "",
+    // knowledge_partner : "",
+    index: 0,
+    active: true,
   }
    
   Active: boolean = true;
@@ -52,25 +61,26 @@ export class EditCoursesComponent implements OnInit {
 
   constructor(private adminServe:AdminServiceService,private router:Router,private route:ActivatedRoute) { }
 
-
   editcourseForm=new FormGroup({
     title:new FormControl('',[Validators.required]),
-    describe:new FormControl('',[Validators.required]),
-    status:new FormControl('',[Validators.required]),
-    rate:new FormControl('',[Validators.required]),
-    category:new FormControl('',[Validators.required]),
+    name:new FormControl('',[Validators.required]),
+    type:new FormControl('',[Validators.required]),
+    short:new FormControl('',[Validators.required]),
+    status: new FormControl('', [Validators.required]),
+    category: new FormControl('', [Validators.required]),
     about:new FormControl('',[Validators.required]),
-    date:new FormControl('',[Validators.required]),
-    eligible:new FormControl('',[Validators.required]),
-    fee:new FormControl('',[Validators.required]),
-    entrance:new FormControl('',[Validators.required]),
-    refund:new FormControl('',[Validators.required]),
-    img:new FormControl('',[Validators.required]),
-    delivery:new FormControl('',[Validators.required]),
-    intern:new FormControl('',[Validators.required]),
-    knowledge:new FormControl('',[Validators.required]),
-    sponsour:new FormControl('',[Validators.required]),
-   
+    entrance: new FormControl('', [Validators.required]),  
+    commencement:new FormControl('',[Validators.required]),
+    orientation: new FormControl('', [Validators.required]),  
+    sdate:new FormControl('',[Validators.required]),
+    fee: new FormControl('', [Validators.required]),  
+    regfee:new FormControl('',[Validators.required]),
+    duration: new FormControl('', [Validators.required]),
+    agenda:new FormControl('',[Validators.required]),
+    sample: new FormControl('', [Validators.required]),
+    placement: new FormControl('', [Validators.required]),
+    intern: new FormControl('', [Validators.required]),
+    img: new FormControl('',[Validators.required]),
   })
 
   editCourse()
@@ -83,17 +93,21 @@ export class EditCoursesComponent implements OnInit {
   {
     return this.editcourseForm.get('title');
   }
-  get describe()
+  get name()
   {
-    return this.editcourseForm.get('describe');
+    return this.editcourseForm.get('name');
+  }
+  get type()
+  {
+    return this.editcourseForm.get('type');
+  }
+  get short()
+  {
+    return this.editcourseForm.get('short');
   }
   get status()
   {
     return this.editcourseForm.get('status');
-  }
-  get rate()
-  {
-    return this.editcourseForm.get('rate');
   }
   get category()
   {
@@ -103,46 +117,57 @@ export class EditCoursesComponent implements OnInit {
   {
     return this.editcourseForm.get('about');
   }
-  get date()
+
+
+  get entrance()
   {
-    return this.editcourseForm.get('date');
+    return this.editcourseForm.get('entrance');
   }
-  get eligible()
+  get commencement()
   {
-    return this.editcourseForm.get('eligible');
+    return this.editcourseForm.get('commencement');
+  }
+  get orientation()
+  {
+    return this.editcourseForm.get('orientation');
+  }
+  get sdate()
+  {
+    return this.editcourseForm.get('sdate');
   }
   get fee()
   {
     return this.editcourseForm.get('fee');
   }
-  get entrance()
+  get regfee()
   {
-    return this.editcourseForm.get('entrance');
+    return this.editcourseForm.get('regfee');
   }
-  get refund()
+  get duration()
   {
-    return this.editcourseForm.get('refund');
+    return this.editcourseForm.get('duration');
   }
-  get img()
+  get agenda()
   {
-    return this.editcourseForm.get('img');
+    return this.editcourseForm.get('agenda');
   }
-  get delivery()
+  get sample()
   {
-    return this.editcourseForm.get('delivery');
+    return this.editcourseForm.get('sample');
+  }
+  get placement()
+  {
+    return this.editcourseForm.get('placement');
   }
   get intern()
   {
     return this.editcourseForm.get('intern');
   }
-  get knowledge()
+  get img()
   {
-    return this.editcourseForm.get('knowledge');
+    return this.editcourseForm.get('img');
   }
-  get sponsour()
-  {
-    return this.editcourseForm.get('sponsour');
-  }
+
 
 
   ngOnInit(): void {
@@ -159,25 +184,6 @@ export class EditCoursesComponent implements OnInit {
 
 
 
-  //course image upload
-  courseImage(event: any) {
-    this.selectedFile = <File>event.target.files[0];
-    this.fd.append('file1', this.selectedFile, this.selectedFile.name);
-  }
-  
-  courseDelivery(event: any){
-    this.selectedFile = <File>event.target.files[0];
-    this.fd.append('file2', this.selectedFile, this.selectedFile.name);
-  }
-
-  courseIntern(event: any) {
-    this.selectedFile = <File>event.target.files[0];
-    this.fd.append('file3', this.selectedFile, this.selectedFile.name);
-  }
-  courseKnowledge(event: any) {
-    this.selectedFile = <File>event.target.files[0];
-    this.fd.append('file4', this.selectedFile, this.selectedFile.name);
-  }
 
 
 
@@ -189,7 +195,7 @@ export class EditCoursesComponent implements OnInit {
     }
     console.log("check", this.fd)
     
-    this.adminServe.editCourse(this.course)
+    this.adminServe.editCourse(this.fd)
     .subscribe(
       data => {
         console.log("get data to ts",data)
@@ -209,6 +215,25 @@ export class EditCoursesComponent implements OnInit {
       });
   }
 
+  //course image upload
+  courseImage(event: any) {
+    this.selectedFile = <File>event.target.files[0];
+    this.fd.append('file', this.selectedFile, this.selectedFile.name);
+  }
+  
+  courseDelivery(event: any){
+    this.selectedFile = <File>event.target.files[0];
+    this.fd.append('file2', this.selectedFile, this.selectedFile.name);
+  }
+
+  courseIntern(event: any) {
+    this.selectedFile = <File>event.target.files[0];
+    this.fd.append('file3', this.selectedFile, this.selectedFile.name);
+  }
+  courseKnowledge(event: any) {
+    this.selectedFile = <File>event.target.files[0];
+    this.fd.append('file4', this.selectedFile, this.selectedFile.name);
+  }
 
  
 }

@@ -96,8 +96,6 @@ get img()
 
   edittestimony() {
   
-    
-   
     for (const prop in this.testimonialItem)
     {
       this.fd.append(prop, this.testimonialItem[prop]);
@@ -109,13 +107,13 @@ get img()
       if (response) {
         Swal.fire("Successfully Updated", "", "success")
           .then(() => {
-            this.router.navigate(['..//testimony'], { relativeTo: this.route });
+            this.router.navigate(['../testimony'], { relativeTo: this.route });
           })
       }
       else {
         Swal.fire("Network Error", "Please do after sometime ", "error")
           .then(() => {
-            this.router.navigate(['..//testimony'], { relativeTo: this.route });
+            this.router.navigate(['../testimony'], { relativeTo: this.route });
           })
 
       }

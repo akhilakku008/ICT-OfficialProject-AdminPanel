@@ -1,10 +1,9 @@
 import { Component, OnInit ,ElementRef,ViewChild} from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Router, ActivatedRoute } from '@angular/router';
-import {HttpClient} from '@angular/common/http'
 import {AdminServiceService} from '../admin-service.service'
 import Swal from 'sweetalert2';
-import { Editor } from 'ngx-editor';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 @Component({
   selector: 'app-addcourse',
@@ -16,26 +15,35 @@ export class AddcourseComponent implements OnInit {
 
 
 
-
     course:any = {
-    courseTitle            : '',
-    courseImage            : '',
-    shortDesc              : '',
-    LongDes                 : '',
-    Reg_Status              : 1 ,
-    Objectives              : '',
-    category                : '',
-    Rating                  : '',
-    about_course            : '',
-    dates                   : '' ,
-    eligibility             : '',
-    course_fee              : '',
-    aptitude_test           : '',
-    course_delivery         : '',
-    internship_partner      : '',
-    knowledge_partner       : '',
-    index                   : 0 ,
-    active                  : true 
+      courseTitle: "",
+      courseShortName: "",
+      courseType: "", //to be added
+      courseImage: "",
+      courseAbout: "", // is same as LongDes
+      courseAgenda: "",
+      courseFee: "",
+      EntranceExamDate : "",
+      commencementDate : "",
+      orientationDate : "",
+      category : "",
+      startDate : "",
+      Objectives: "",
+      courseRegFee : "",
+      courseDuration : "",
+      Reg_Status: 1,
+      samplequestion : "",
+      placementlist : "",
+      // samplecertificate: String,
+      internshipcertificate : "",
+      shortDesc : "",
+      // LongDes : "",
+      // course_delivery : "",
+      // internship_partner : "",
+      // knowledge_partner : "",
+      index: 0,
+      active: true,
+    
   }
   
    
@@ -48,11 +56,12 @@ export class AddcourseComponent implements OnInit {
 
   selectedFile: any = null;
   formData: any = {};
+
   fd = new FormData();
   
   images:any
 
-  constructor(private Adminserve: AdminServiceService, private router: Router, private route: ActivatedRoute,private httpClient:HttpClient) { 
+  constructor(private Adminserve: AdminServiceService, private router: Router, private route: ActivatedRoute) { 
     
   }
 
@@ -64,22 +73,24 @@ export class AddcourseComponent implements OnInit {
 
   AddcourseForm=new FormGroup({
     title:new FormControl('',[Validators.required]),
-    describe:new FormControl('',[Validators.required]),
-    status:new FormControl('',[Validators.required]),
-    rate:new FormControl('',[Validators.required]),
-    category:new FormControl('',[Validators.required]),
+    name:new FormControl('',[Validators.required]),
+    type:new FormControl('',[Validators.required]),
+    short:new FormControl('',[Validators.required]),
+    status: new FormControl('', [Validators.required]),
+    category: new FormControl('', [Validators.required]),
     about:new FormControl('',[Validators.required]),
-    date:new FormControl('',[Validators.required]),
-    eligible:new FormControl('',[Validators.required]),
-    fee:new FormControl('',[Validators.required]),
-    entrance:new FormControl('',[Validators.required]),
-    refund:new FormControl('',[Validators.required]),
-    img:new FormControl('',[Validators.required]),
-    delivery:new FormControl('',[Validators.required]),
-    intern:new FormControl('',[Validators.required]),
-    knowledge:new FormControl('',[Validators.required]),
-    sponsour:new FormControl('',[Validators.required]),
-   
+    entrance: new FormControl('', [Validators.required]),  
+    commencement:new FormControl('',[Validators.required]),
+    orientation: new FormControl('', [Validators.required]),  
+    sdate:new FormControl('',[Validators.required]),
+    fee: new FormControl('', [Validators.required]),  
+    regfee:new FormControl('',[Validators.required]),
+    duration: new FormControl('', [Validators.required]),
+    agenda:new FormControl('',[Validators.required]),
+    sample: new FormControl('', [Validators.required]),
+    placement: new FormControl('', [Validators.required]),
+    intern: new FormControl('', [Validators.required]),
+    img: new FormControl('',[Validators.required]),
   })
 
   addCourse()
@@ -92,17 +103,21 @@ export class AddcourseComponent implements OnInit {
   {
     return this.AddcourseForm.get('title');
   }
-  get describe()
+  get name()
   {
-    return this.AddcourseForm.get('describe');
+    return this.AddcourseForm.get('name');
+  }
+  get type()
+  {
+    return this.AddcourseForm.get('type');
+  }
+  get short()
+  {
+    return this.AddcourseForm.get('short');
   }
   get status()
   {
     return this.AddcourseForm.get('status');
-  }
-  get rate()
-  {
-    return this.AddcourseForm.get('rate');
   }
   get category()
   {
@@ -112,45 +127,55 @@ export class AddcourseComponent implements OnInit {
   {
     return this.AddcourseForm.get('about');
   }
-  get date()
+
+
+  get entrance()
   {
-    return this.AddcourseForm.get('date');
+    return this.AddcourseForm.get('entrance');
   }
-  get eligible()
+  get commencement()
   {
-    return this.AddcourseForm.get('eligible');
+    return this.AddcourseForm.get('commencement');
+  }
+  get orientation()
+  {
+    return this.AddcourseForm.get('orientation');
+  }
+  get sdate()
+  {
+    return this.AddcourseForm.get('sdate');
   }
   get fee()
   {
     return this.AddcourseForm.get('fee');
   }
-  get entrance()
+  get regfee()
   {
-    return this.AddcourseForm.get('entrance');
+    return this.AddcourseForm.get('regfee');
   }
-  get refund()
+  get duration()
   {
-    return this.AddcourseForm.get('refund');
+    return this.AddcourseForm.get('duration');
   }
-  get img()
+  get agenda()
   {
-    return this.AddcourseForm.get('img');
+    return this.AddcourseForm.get('agenda');
   }
-  get delivery()
+  get sample()
   {
-    return this.AddcourseForm.get('delivery');
+    return this.AddcourseForm.get('sample');
+  }
+  get placement()
+  {
+    return this.AddcourseForm.get('placement');
   }
   get intern()
   {
     return this.AddcourseForm.get('intern');
   }
-  get knowledge()
+  get img()
   {
-    return this.AddcourseForm.get('knowledge');
-  }
-  get sponsour()
-  {
-    return this.AddcourseForm.get('sponsour');
+    return this.AddcourseForm.get('img');
   }
 
   ngOnInit(): void {
@@ -159,37 +184,36 @@ export class AddcourseComponent implements OnInit {
 
   //course image upload
   courseImage(event: any) {
+    
     this.selectedFile = <File>event.target.files[0];
-    this.fd.append('file1', this.selectedFile, this.selectedFile.name);
+    this.fd.append('file', this.selectedFile, this.selectedFile.name);
   }
   
-  courseDelivery(event: any){
-    this.selectedFile = <File>event.target.files[0];
-    this.fd.append('file2', this.selectedFile, this.selectedFile.name);
-  }
+  // courseDelivery(event: any){
+  //   this.selectedFile = <File>event.target.files[0];
+  //   this.fd.append('file2', this.selectedFile, this.selectedFile.name);
+  // }
 
-  courseIntern(event: any) {
-    this.selectedFile = <File>event.target.files[0];
-    this.fd.append('file3', this.selectedFile, this.selectedFile.name);
-  }
+  // courseIntern(event: any) {
+  //   this.selectedFile = <File>event.target.files[0];
+  //   this.fd.append('file3', this.selectedFile, this.selectedFile.name);
+  // }
 
-  courseKnowledge(event: any) {
-    this.selectedFile = <File>event.target.files[0];
-    this.fd.append('file4', this.selectedFile, this.selectedFile.name);
-  }
+  // courseKnowledge(event: any) {
+  //   this.selectedFile = <File>event.target.files[0];
+  //   this.fd.append('file4', this.selectedFile, this.selectedFile.name);
+  // }
 
 
   AddCourse() {
    
+    console.log("vannee", this.course)
+    
     for (const prop in this.course)
     {
       this.fd.append(prop, this.course[prop]);
     }
-   
-    // this.Adminserve.newCourse(this.fd).subscribe((data) => {
-    //   console.log(data,"reached..")
-    // })
-
+  
     this.Adminserve.newCourse(this.fd).subscribe(
       response => {
         if (response) {

@@ -43,15 +43,15 @@
                 </div>
               </div>
               <div class="card-body">
-                <form role="form" class="text-start" [formGroup]="loginForm" (ngSubmit)="loginAdmin()">
+                <form role="form" class="text-start" [formGroup]="loginForm"  (submit)="loginUser()">
                   <div class="input-group input-group-outline my-3">
-                    <label class="form-label">Email</label>
-                    <input type="email" class="form-control"  formControlName="email" name="email"  [(ngModel)]="userLogin.email">
+                    <!-- <label class="form-label">Email</label> -->
+                    <input type="email" class="form-control"  formControlName="email" name="email" placeholder="Email"  [(ngModel)]="userLogin.email">
                   </div>
                   <small style="color:#D81B60;" *ngIf="email && email.invalid && email.touched">Email is required</small>
                   <div class="input-group input-group-outline mb-3">
-                    <label class="form-label">Password</label>
-                    <input type="password" class="form-control"  formControlName="password" name="pass"  [(ngModel)]="userLogin.password">
+                    <!-- <label class="form-label">Password</label> -->
+                    <input type="password" class="form-control"  formControlName="password" name="pass" placeholder="password" [(ngModel)]="userLogin.password">
                   </div>
                   <small style="color:#D81B60;" *ngIf="password && password.invalid && password.touched">Password is required</small>
                   <div class="form-check form-switch d-flex align-items-center mb-3">
@@ -60,7 +60,7 @@
                     <a routerLink="/adminpage/reset" class="change_pass">Forget Password</a>
                   </div>
                   <div class="text-center">
-                    <button [disabled]="loginForm.invalid" routerLink="/adminpage/dashboard" type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2" (submit)="loginUser()">Sign in</button>
+                    <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2" >Sign in</button>
                   </div>
                 </form>
               </div>
@@ -72,7 +72,7 @@
         <div class="container">
           <div class="row align-items-center justify-content-lg-between">
             <div class="col-12 col-md-6 my-auto text-center">
-              <div class="copyright text-center text-sm text-white text-lg-start">
+              <div class="copyright text-center text-sm text-white text-lg-start  ms-5">
                 All credits reserved by
                 <a href="" class="text-lg text-white" target="_blank">ICT Academy of Kerala</a>
               </div>

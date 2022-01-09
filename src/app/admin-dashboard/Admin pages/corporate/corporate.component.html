@@ -237,7 +237,7 @@
                                         
                                         <td class="align-center text-center act-align">
                                             
-                                            <i class="fas fa-trash ms-3 text-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete the corporate member" (click)="deletecorporate(corporate)"></i>
+                                            <i class="fas fa-trash ms-3 text-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete the corporate member"  *ngIf="auth.loggedIn() && auth.delete ==='true'||auth.loggedIn() && auth.superadmin === 'true'" (click)="deletecorporate(corporate)"></i>
                                           </td>
                                       </tr>
                                       
